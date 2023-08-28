@@ -1,0 +1,145 @@
+.Accueil {
+  margin: 0;
+  height: 100%;
+}
+
+.Accueil-image {
+  height: 50vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-image: url("https://www.cmontmorency.qc.ca/wp-content/uploads/2023/04/Accueil-nouveau-site-web-1.png");
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+.Accueil-title-box {
+  top: -40px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  color: rgb(216, 216, 216);
+  text-align: center;
+  backdrop-filter: blur(20px) saturate(2);
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  font-weight: 600;
+  padding: 10px;
+  width: 80%;
+}
+.accueil-flex-container{
+  margin: 10px;
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.accueil-flex-item-card{
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  max-width: 500px;
+}
+.accueil-flex-item-card-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.accueil-flex-item-card-icon svg{
+  background-color: #B3C000;
+  border-radius: 360px;
+  padding: 2px;
+  fill: white;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+.accueil-flex-item-links{
+  text-decoration: none;
+  position: relative;
+  align-items: center;
+  color: #B3C000;
+  bottom: 0;
+}
+.arrow-icon {
+  transition: transform 0.3s ease-in-out;
+}
+.accueil-flex-item-links:hover{
+  color: #666;
+}
+.accueil-flex-item-links:hover .arrow-icon {
+  transform: rotate(90deg);
+}
+.EspaceEmployeur {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
+}
+.EspaceEmployeur p {
+  text-align: center;
+  width: auto;
+}
+.ProfilStagiaires {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
+}
+.list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.list-container h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.list-container ul {
+  list-style-type: none;
+  padding-left: 0;
+  max-width: 45%;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 32px;
+}
+
+.list-container li {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.list-container li:last-child {
+  margin-bottom: 0;
+}
+
+.FAQ {
+  margin: 0%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
+  color: #333;
+  overflow-x: hidden;
+}
+
+.FAQ__header {
+  font-size: 42px;
+  border-bottom: 1px dotted #ccc;
+  padding: 24px;
+}
+
+.FAQ__content {
+  margin: 0 auto;
+}

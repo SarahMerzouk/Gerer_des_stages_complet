@@ -1,0 +1,33 @@
+.Footer{
+    background-color: #303032;
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+}
+.container{
+    justify-content: center;
+    align-items: center;
+    color: white;
+    display: flex;
+}
+.img{
+    margin-right: 10px;
+}
+.a-link{
+    color: white;
+    margin: 2px;
+    text-decoration: none;
+    font-size: 60px;
+}
+.copyright{
+    color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+}
+.a-copyright{
+    text-decoration: none;
+    color: gray;
+    margin: 10px;
+}

@@ -1,0 +1,96 @@
+.InternshipList {
+  position: relative;
+  display: inline-block;
+  justify-content: center;
+}
+.list {
+  position: relative;
+  justify-content: center;
+}
+.radio-inputs {
+  z-index: 1;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+  padding: 0.5rem;
+  margin: auto;
+  max-width: 600px;
+  width: 80%;
+  font-size: 14px;
+}
+
+.radio-inputs .radio {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.radio-inputs .radio input {
+  display: none;
+}
+
+.radio-inputs .radio .name {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.2rem 0;
+  color: rgba(51, 65, 85, 1);
+  transition: all 0.15s ease-in-out;
+  font-size: 17px;
+}
+
+.radio-inputs .radio input:checked + .name {
+  background-color: #1f2f53;
+  color: white;
+}
+.search-bar {
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  padding-top: 10%;
+}
+
+.search-input {
+  width: 40%;
+  padding: 12px 24px;
+  background-color: rgb(255, 255, 255);
+  border: solid #D1D5DB 1px;
+  transform: 250ms ease-in-out;
+  font-size: 14px;
+  line-height: 18px;
+  color: #575756;
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  background-position: 95% center;
+  border-radius: 15px;
+  transition: all 250ms ease-in-out;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  margin: 10px;
+}
+.search-input::placeholder {
+  color: color(#575756 a(0.8));
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.search-input:hover,
+.search-input:focus {
+  outline: 0;
+  background-position: 100% center;
+  border:solid #1f2f53 1px;
+  border-radius: 5px;
+}
+
+@media(min-width: 1150px) {
+.list {
+  position: relative;
+  justify-content: center;
+}
+}

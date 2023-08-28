@@ -1,0 +1,20 @@
+@import url('https://fonts.cdnfonts.com/css/product-sans');
+
+
+body {
+  margin: 0;
+  font-family: 'Product Sans', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
+  min-height: 100vh;
+}
+
+code {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+@media (min-width: 1150px) {
+  .main-header {
+    justify-content: space-between;
+  }
+}

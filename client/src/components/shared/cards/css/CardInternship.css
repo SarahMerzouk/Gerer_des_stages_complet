@@ -1,0 +1,115 @@
+.wrapper{
+    background-image: linear-gradient(131.83deg, #1f2f53ab 0%,     #1f2f53ab 99.21%);
+    padding-top: 5px;
+    border-radius: 3px;
+}
+.CardIntership{
+    background-color: white;
+    box-shadow: 0 30px 30px -25px #a7a7a7;
+    border-radius: 3px;
+    max-width: 900px;
+    max-height: 1300px;
+    min-height: 300px;
+    height: auto;
+    margin: 10px;
+    padding: 20px;
+}
+.CardIntership span{
+    display: block;
+}
+
+.description-text{
+    color: #595959;
+    text-align: justify;
+    max-width: 900px;
+    width: auto;
+    overflow-wrap: break-word;
+}
+.card-text{
+    color: #595959;
+}
+.card-info{
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-info-element{
+    overflow: hidden;
+    margin: 3px;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    background-color: #dfdddc;
+    border-radius: 5px;
+}
+.type-text{
+    color: rgb(157, 157, 157);
+}
+.title-text{
+    color: #2D2D2D;
+    display: inline;
+}
+.setting-wheel{
+    cursor: pointer;
+    display: block;
+    top: 0;
+    right: 0;
+    width: auto;
+    padding: 12px 10px 10px 14px;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    color: #595959;
+    text-align: center;
+    background-color: rgb(247, 247, 247);
+    border: solid #595959 1px;
+    border-radius: 7px;
+}
+.setting-wheel:hover{
+    background-color: #a7a7a7;
+    color: white;
+}
+.app-button-container{
+    display: flex;
+    justify-content: right;
+}
+.app-button{
+    margin: 10px;
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: solid #a7a7a7 1px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    
+}
+.app-button:hover{
+    background-color: #b3c000;
+    box-shadow: 0px 15px 20px #828282;
+    color: #fff;
+    transform: translateY(-7px);
+}
+.app-button:active{
+    transform: translateY(-1px);
+}
+.app-button-disabled{
+    margin: 10px;
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    color: #000;
+    background-color: #7e7e7e;
+    border: solid #a7a7a7 1px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}

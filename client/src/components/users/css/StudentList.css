@@ -1,0 +1,53 @@
+.student{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-userTable{
+    display: flex;
+    position: relative;
+    margin-top: 250px;
+    overflow: auto;
+}
+.container-button-file{
+    margin: 10px;
+    display: block;
+    justify-content: center;
+}
+.file-div{
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    position:absolute;
+    display: block;
+    width: auto;
+    padding: 20px;
+}
+.button-file{
+    margin: 10px;
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: solid #a7a7a7 1px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+.button-file:hover{
+    background-color: #b3c000;
+    box-shadow: 0px 15px 20px #828282;
+    color: #fff;
+    transform: translateY(-7px);
+}
+@media (max-width: 990px) {
+    .div-userTable{
+        margin-top: 300px;
+    }
+}

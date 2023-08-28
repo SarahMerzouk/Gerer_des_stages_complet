@@ -1,0 +1,41 @@
+.SettingContainer{
+    position:relative;
+}
+.SettingForm{
+    background-color: rgb(247, 247, 247);
+    border: solid gray 1px;
+    border-radius: 5px;
+    position:absolute;
+    justify-content: right;
+    float: right;
+    margin: auto;
+    right: 0;
+    top: 5px;
+    padding: 10px;
+    z-index: 2;
+}
+.Setting-button__container{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+}
+.Setting-button__container:hover{
+    background-color: rgb(202, 202, 202);
+    cursor: pointer;
+}
+.Setting-button__text{
+    justify-content: center;
+    color: rgb(106, 106, 106);
+}
+.SettingForm-button:hover{
+    background-color: rgb(247, 247, 247);
+}
+.bi{
+    margin-right: 5px;
+}
+.navlink{
+    color: rgb(106, 106, 106);
+    text-decoration: none;
+}

@@ -1,0 +1,13 @@
+.Boss{
+    position: relative;
+    padding: 15px;
+}
+.boss-content{
+    display: flex;
+    justify-content: center;
+}
+.Student{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
