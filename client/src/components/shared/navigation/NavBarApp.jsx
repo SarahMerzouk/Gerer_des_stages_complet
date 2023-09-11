@@ -81,13 +81,18 @@ function NavBarApp({ role }) {
             </Nav.Link>
           )}
           {isLoggedIn && (
-            <Nav.Link
-              className="link-element align-right"
-              as={Link}
-              to="/logout"
-            >
+            <NavDropdown
+            className="link-element navElements"
+            title="Profil"
+            id="basic-nav-dropdown"
+          >
+            <NavDropdown.Item as={Link} to="/logout">
               Se déconnecter
-            </Nav.Link>
+            </NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/logout">
+              Se déconnecter
+            </NavDropdown.Item>
+          </NavDropdown>
           )}
         </Nav>
       </Navbar.Collapse>

@@ -192,6 +192,9 @@ function App() {
                 return <Redirect to="/" />;
               }}
             />
+              <Route path="/users/:id/editAccount/:token">
+                {/* <EditAccount/> */}
+              </Route>
             <Route path="">
               <Accueil />
             </Route>
