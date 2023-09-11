@@ -45,7 +45,7 @@ function App() {
         return false;
       }
     } catch (error) {
-      // Error occurred while decoding, token might be invalid
+      // Error occurred while decoding, token might be invalid 
       return true;
     }
   }
