@@ -67,7 +67,7 @@ function InternshipListStudent() {
           handleInternshipsList(response.data.internships);
           setIsLoading(false);
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       } else {
       }

@@ -17,10 +17,9 @@ const internshipSchema = new Schema({
   internshipdescription: { type: String, required: true },
   salary: { type: String, required: true },
   ownerid: { type: mongoose.Types.ObjectId, required: true, ref: "OwnerId" },
-  applicantlist: [
-    { type: mongoose.Types.ObjectId, ref: "StudentId" },
-  ],
-  creationdate: { type: Date, default: Date.now},
+  applicantlist: [{ type: mongoose.Types.ObjectId, ref: "StudentId" }],
+  studentList: [{ type: mongoose.Types.ObjectId, ref: "StudentId" }],
+  creationdate: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model("Internship", internshipSchema);

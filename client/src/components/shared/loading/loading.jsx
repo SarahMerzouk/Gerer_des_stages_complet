@@ -5,7 +5,7 @@ function Loading() {
   return (
     <div className="custom-alertL">
       <div className="custom-alert-contentL">
-        Chargement en cours<div class="custom-loader"></div>
+        Chargement en cours<div className="custom-loader"></div>
       </div>
     </div>
   );

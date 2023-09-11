@@ -1,79 +1,93 @@
 .UserList {
-    display: flex;
-    position: relative;
-    overflow: auto;
+  position: relative;
+  display: inline-block;
+  justify-content: center;
+  overflow: auto;
 }
-.UserTable{
-    padding: 10px;
-    border-spacing: 0;
-    margin: 10px;
+.UserTable {
+  position: relative;
+  justify-content: center;
 }
 .UserList-header {
-    border: 1px solid #ddd;
+  border: 1px solid #ddd;
+  background-color: white;
+  padding: 0.625em;
+  border-radius: 10px !important;
 }
-
-.UserList-header:nth-child(even) {
-    background: #cdcdcd;
+.centerButton{
+  display: flex;
+  justify-content: center;
 }
-
 .UserList-td {
-    justify-content: space-evenly;
-    padding: .625em;
-    text-align: left;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  justify-content: space-evenly;
+  padding: 0.625em;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: solid, #e5e7eb, 0.1rem;
 }
 
 .UserList-th {
-    width: auto;
-    padding: .625em;
-    text-align: left;
-    background: #999;
-    color: #fff;
-    font-size: .85em;
-    letter-spacing: .1em;
-    text-transform: uppercase;
+  width: auto;
+  padding: 0.625em;
+  text-align: left;
+  background: #999;
+  color: #fff;
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .UserList-delete {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
-.UserList-delete-button{
-    cursor: pointer;
-    display: block;
-    top: 0;
-    right: 0;
-    width: auto;
-    padding: 12px 10px 10px 14px;
-    margin: 0;
-    justify-content: center;
-    align-items: center;
-    float: right;
-    color: #595959;
-    text-align: center;
-    background-color: rgb(247, 247, 247);
-    border: solid #595959 1px;
-    border-radius: 7px;
+.UserList-delete-button {
+  cursor: pointer;
+  display: block;
+  top: 0;
+  right: 0;
+  width: auto;
+  padding: 12px 10px 10px 14px;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  float: right;
+  color: #595959;
+  text-align: center;
+  background-color: rgb(247, 247, 247);
+  border: solid #595959 1px;
+  border-radius: 7px;
 }
-.UserList-delete-button:hover{
-    fill: red;
-    border: solid red 1px;
+.UserList-delete-button:hover {
+  fill: red;
+  border: solid red 1px;
 }
-.select{
-    position: relative;
+.select {
+  position: relative;
   display: block;
   width: 100%;
   margin: 0 auto;
   font-size: 15px;
   color: #60666d;
 }
-.select:focus{
-    cursor: pointer;
+.select:focus {
+  cursor: pointer;
 }
 @media (max-width: 990px) {
-    .div-userTable{
-        margin-top: 300px;
-    }
+  .div-userTable {
+    margin-top: 300px;
+  }
+  .UserTable {
+    position: relative;
+    justify-content: center;
+}
+}
+.addButton{
+  color: black;
+}
+.addButton:hover{
+  color: rgb(0, 255, 42);
+  border: solid rgb(0, 255, 42) 1px;
 }

@@ -20,13 +20,11 @@ function NavBarApp({ role }) {
     <Navbar bg="light" expand="lg" className="main-header">
       <Navbar.Brand as={Link} to="/" className="img">
         <div className="main-navigation__logo-img">
-          <Link to="/" rel="noreferrer">
-            <img
-              src="https://www.cmontmorency.qc.ca/wp-content/uploads/2018/03/Logomo_1400.png"
-              alt="Logo"
-              className="img"
-            />
-          </Link>
+          <img
+            src="https://www.cmontmorency.qc.ca/wp-content/uploads/2018/03/Logomo_1400.png"
+            alt="Logo"
+            className="img"
+          />
         </div>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -35,7 +33,11 @@ function NavBarApp({ role }) {
           <Nav.Link className="link-element" as={Link} to="/">
             Accueil
           </Nav.Link>
-          <NavDropdown className="link-element navElements" title="Gestion des stages" id="basic-nav-dropdown">
+          <NavDropdown
+            className="link-element navElements"
+            title="Gestion des stages"
+            id="basic-nav-dropdown"
+          >
             <NavDropdown.Item as={Link} to="/EspaceEtudiant">
               Espace Étudiant
             </NavDropdown.Item>
@@ -70,12 +72,20 @@ function NavBarApp({ role }) {
             FAQ
           </Nav.Link>
           {!isLoggedIn && (
-            <Nav.Link className="link-element align-right" as={Link} to="/login">
+            <Nav.Link
+              className="link-element align-right"
+              as={Link}
+              to="/login"
+            >
               Se connecter
             </Nav.Link>
           )}
           {isLoggedIn && (
-            <Nav.Link className="link-element align-right" as={Link} to="/logout">
+            <Nav.Link
+              className="link-element align-right"
+              as={Link}
+              to="/logout"
+            >
               Se déconnecter
             </Nav.Link>
           )}

@@ -10,6 +10,7 @@ router.delete("/delete-internship",verifyToken,InternshipController.deleteIntern
 router.post("/update-internship",verifyToken,InternshipController.updateInternship);
 router.post("/add-Applicant",verifyToken, InternshipController.addApplicant);
 router.post("/is-Applicant-In-List",verifyToken, InternshipController.isApplicantInList);
+router.post("/add-student",verifyToken,InternshipController.addStudent);
 
 
 module.exports = router;

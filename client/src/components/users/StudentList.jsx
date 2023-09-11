@@ -125,7 +125,7 @@ function StudentList() {
           </thead>
           <tbody>
             {students.map((student) => (
-              <CardStudent student={student} />
+              <CardStudent key={student._id} student={student} />
             ))}
           </tbody>
         </table>

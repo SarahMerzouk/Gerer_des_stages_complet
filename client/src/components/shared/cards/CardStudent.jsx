@@ -11,7 +11,7 @@ function CardStudent({student}){
             data: { userId: userId },
           })
           .catch((error) => {
-            console.log(error);
+            console.error(error);
           });
       };
 

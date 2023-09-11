@@ -19,13 +19,13 @@ function SettingForm({ internshipId,internship }) {
           data: { internshipId: internshipId },
         })
         .catch((error) => {
-          console.log(error);
+          console.error(error);
         });
       handleInternshipsList((internshipsList) =>
         internshipsList.filter((item) => item._id !== internshipId)
       );
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   return (

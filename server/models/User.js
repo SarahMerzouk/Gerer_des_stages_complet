@@ -9,6 +9,7 @@ const userSchema = new Schema({
   password: { type: String, required: true },
   usertype: { type: String, required: true },
   creationdate: { type: Date, default: Date.now},
+  verified: {type: Boolean, default: false},
 });
 
 userSchema.pre("save", async function (next) {

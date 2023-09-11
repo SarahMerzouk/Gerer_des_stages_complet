@@ -1,6 +1,6 @@
 const fs = require("fs");
 const Student = require("../models/Student"); // assuming the schema is in a file called "student.js"
-const HttpError = require("../models/HttpErreur");
+const HttpError = require("../models/HttpError");
 const csvParser = require('csv-parser');
 const multer = require("multer");
 

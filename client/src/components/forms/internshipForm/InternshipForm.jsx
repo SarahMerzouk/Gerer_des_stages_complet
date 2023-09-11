@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import "./css/InternshipForm.css";
 import UserContext from "../../../UserContext";
+import CustomAlert from "../../shared/customalert/CustomAlert";
 
 function InternshipForm() {
   const { userId, internshipsList, handleInternshipsList } =
@@ -18,6 +19,15 @@ function InternshipForm() {
   const [nbPositions, setNbPositions] = useState("");
   const [internshipSalary, setInternshipSalary] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +52,8 @@ function InternshipForm() {
         handleInternshipsList([...internshipsList, response.data.internship]);
       })
       .catch((error) => {
-        console.log(error);
+        handleShowAlert(true);
+        console.error(error);
       });
   };
 
@@ -52,6 +63,12 @@ function InternshipForm() {
 
   return (
     <div className="form-container">
+      <CustomAlert
+        show={showAlert}
+        onClose={handleCloseAlert}
+        title="Error"
+        message="Il y a eu une erreur, contacter sylvain.labranche@cmontmorency.qc.ca"
+      />
       <button className="button" onClick={handleButtonClick}>
         {showForm ? "X" : "Ajouter Stage"}
       </button>
@@ -63,8 +80,10 @@ function InternshipForm() {
           </>
           <div className="formbold-form-wrapper">
             <form onSubmit={handleSubmit}>
-              <div class="formbold-form-title">
-                <h2 class="">Formulaire d'inscription de milieu de stage</h2>
+              <div className="formbold-form-title">
+                <h2 className="">
+                  Formulaire d'inscription de milieu de stage
+                </h2>
                 <p>
                   Stages réguliers ayant lieu à la session hiver Les stages sont
                   du 21 janvier au 3 mai 2019 (il est toutefois possible après
@@ -76,7 +95,7 @@ function InternshipForm() {
                   compétences des étudiants.
                 </p>
               </div>
-              <div class="formbold-mb-3">
+              <div className="formbold-mb-3">
                 <label className="inputText">
                   Titre du stage :
                   <input
@@ -89,7 +108,7 @@ function InternshipForm() {
                   />
                 </label>
               </div>
-              <div class="formbold-input-flex">
+              <div className="formbold-input-flex">
                 <div>
                   <label className="inputText">
                     Nom de l'Entreprise :
@@ -118,7 +137,7 @@ function InternshipForm() {
                 </div>
               </div>
 
-              <div class="formbold-input-flex">
+              <div className="formbold-input-flex">
                 <div>
                   <label className="inputText">
                     Adresse de l'Entreprise :
@@ -146,7 +165,7 @@ function InternshipForm() {
                   </label>
                 </div>
               </div>
-              <div class="formbold-mb-3">
+              <div className="formbold-mb-3">
                 <label className="inputText">
                   Email du recruteur :
                   <input
@@ -160,7 +179,7 @@ function InternshipForm() {
                 </label>
               </div>
 
-              <div class="formbold-mb-3">
+              <div className="formbold-mb-3">
                 <label className="inputText">
                   Type du Stage :
                   <select
@@ -183,13 +202,13 @@ function InternshipForm() {
                 </label>
               </div>
 
-              <div class="formbold-input-flex">
+              <div className="formbold-input-flex">
                 <div>
                   <label className="inputText">
                     Salaire :
                     <input
                       type="text"
-                      placeholder="De 68 393 $ à 139 707 $"
+                      placeholder="X$ de l'heure"
                       className="formbold-form-input"
                       value={internshipSalary}
                       onChange={(e) => setInternshipSalary(e.target.value)}
@@ -212,7 +231,7 @@ function InternshipForm() {
                 </div>
               </div>
 
-              <div class="formbold-mb-3">
+              <div className="formbold-mb-3">
                 <label className="inputText">
                   Description du Stage :
                   <textarea

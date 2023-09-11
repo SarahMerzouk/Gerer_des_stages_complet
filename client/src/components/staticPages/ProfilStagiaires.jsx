@@ -7,6 +7,8 @@ function ProfilStagiaires(props) {
       <div className="Profil-title">
         <h1 className="Profil-title-text">Nos étudiants en Gestion de réseaux et sécurité</h1>
       </div>
+
+      
       <div className="Profil-flex-container">
         <div className="Profil-flex-card">
           <div className="Profil-flex-title">
@@ -28,6 +30,8 @@ function ProfilStagiaires(props) {
             </ul>
           </div>
         </div>
+
+
         <div className="Profil-flex-card">
           <div className="Profil-flex-title">Sécurité et support technique</div>
           <div className="Profil-flex-card-content">

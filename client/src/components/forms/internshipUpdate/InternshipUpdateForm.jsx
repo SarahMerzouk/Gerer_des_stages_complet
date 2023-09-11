@@ -38,7 +38,7 @@ function InternshipUpdateForm() {
       setNbPositions(internship.nbpositions);
       setInternshipSalary(internship.salary);
     } catch (er) {
-      console.log(er);
+      console.error(er);
     }
   }, [
     internship.companyadresse,
@@ -78,7 +78,7 @@ function InternshipUpdateForm() {
         alert("Modification réussi !");
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   };
 

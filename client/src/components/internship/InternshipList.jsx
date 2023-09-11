@@ -69,7 +69,7 @@ function InternshipList({ isCoordinateur }) {
             handleInternshipsList(response.data.internships);
             handleInternshipsList(response.data.internships);
           } catch (error) {
-            console.log(error);
+            console.error(error);
           }
         }
       }
@@ -84,7 +84,7 @@ function InternshipList({ isCoordinateur }) {
             );
             handleInternshipsList(response.data.internships);
           } catch (error) {
-            console.log(error);
+            console.error(error);
           }
         }
       }

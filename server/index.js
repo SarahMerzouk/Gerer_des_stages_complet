@@ -7,7 +7,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 const URL = process.env.HOSTCONNECTION + "internships";
-const HttpErreur = require("./models/HttpErreur");
+const HttpError = require("./models/HttpError");
 const UserRoute = require("./routes/UserRoute");
 const InternshipRoute = require("./routes/InternshipRoute");
 const EmailSysController = require("./routes/EmailSysRoute");
@@ -23,7 +23,7 @@ app.use("/api/user", UserRoute);
 app.use("/api/internship", InternshipRoute);
 app.use("/api/student", StudentRoute);
 app.use((requete, reponse, next) => {
-  return next(new HttpErreur("Route non trouvée", 404 ));
+  return next(new HttpError("Route non trouvée", 404 ));
 });
 
 app.use((error, requete, reponse, next) => {
@@ -42,12 +42,12 @@ mongoose
   .connect(URL)
   .then(() => {
     app.listen(5000);
-    console.log("Connexion à la base de données réussie");
+    console.error("Connexion à la base de données réussie");
   })
   .catch((erreur) => {
-    console.log(erreur);
+    console.error(erreur);
   });
 
 app.listen(PORT, () => {
-  console.log("Server is running");
+  console.error("Server is running");
 });

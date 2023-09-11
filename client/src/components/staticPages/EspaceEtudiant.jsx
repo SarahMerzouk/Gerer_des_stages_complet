@@ -4,7 +4,9 @@ import "./css/EspaceEtudiant.css";
 function EspaceEtudiant(props) {
   return (
     <div className="EspaceEtudiant">
-    <div className="Etudiant-title">      <h1>Directives pour les étudiants</h1></div>
+      <div className="Etudiant-title">
+        <h1>Directives pour les étudiants</h1>
+      </div>
       <div className="Etudiant-flex-container">
         <div className="Etudiant-flex-card">
           <div className="Etudiant-flex-title">
