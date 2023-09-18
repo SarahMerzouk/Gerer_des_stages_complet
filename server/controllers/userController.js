@@ -27,8 +27,8 @@ const register = async (req, res) => {
   }).save();
 
   const jwT = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+
   const url = `${process.env.BASE_URL}/users/${user.id}/verify/${token.token}`;
-  console.log(url)
   await sendEmail(user.email, "Verify Email", url);
 
   res.status(201).send({ jwT });
@@ -40,6 +40,7 @@ const login = async (req, res) => {
 
     const user = await User.findOne({ email: email });
     if (!user || !(await user.comparePassword(password))) {
+      console.log("test")
       return res.status(401).send("Identifiants invalides.");
     }
     const userType = await user.usertype;
