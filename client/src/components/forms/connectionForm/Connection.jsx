@@ -177,14 +177,14 @@ function Connection() {
                 />
               </div>
 
-              {/* ajout d'une liste déroulante pour choisir le type d'utilisateur */}
+              {/* add a listBox to choose user type (Student/employer) */}
               <label>Type d'utilisateur: </label>
               <div>
                 <select 
                   name="user_type" 
-                  id="user_type_id_select" 
                   onChange={(e) => setUserTypeRegister(e.target.value)} 
                   value={usertypeRegister} 
+                  className="form-connection-input"
                   required>
 
                   <option value="" disabled defaultValue>Fais ton choix</option>
