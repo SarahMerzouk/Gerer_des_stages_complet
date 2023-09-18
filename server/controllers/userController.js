@@ -27,8 +27,8 @@ const register = async (req, res) => {
   }).save();
 
   const jwT = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-
   const url = `${process.env.BASE_URL}/users/${user.id}/verify/${token.token}`;
+  console.log(url)
   await sendEmail(user.email, "Verify Email", url);
 
   res.status(201).send({ jwT });
