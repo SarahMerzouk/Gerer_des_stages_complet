@@ -24,6 +24,7 @@ import Connection from "./components/forms/connectionForm/Connection";
 import EmailChecker from "./components/email/EmailChecker.jsx";
 import EnterEmail from "./components/email/EnterEmail";
 import ChangePassword from "./components/email/ChangePassword";
+import Profil from "./components/forms/updateProfile/Profil";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -184,6 +185,9 @@ function App() {
             </Route>
             <Route path="/users/EnterEmail">
                 <EnterEmail/>
+            </Route>
+            <Route path="/profil">
+              <Profil/>
             </Route>
             <Route
               path="/logout"
