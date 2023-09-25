@@ -13,12 +13,12 @@ function Connection() {
   const [emailRegister, setEmailRegister] = useState("");
   const [usernameRegister, setUserNameRegister] = useState("");
   const [passwordRegister, setPasswordRegister] = useState("");
-  const [usertypeRegister] = useState("Etudiant");
+  const [usertypeRegister, setUserTypeRegister] = useState("");
   const [emailLogin, setEmailLogin] = useState("");
   const [passwordLogin, setPasswordLogin] = useState("");
   const [error, setError] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
-  const URL = "http://127.0.0.1:5000";
+  const URL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
     setError("");
@@ -48,6 +48,7 @@ function Connection() {
   const handleSubmitRegister = async (e) => {
     e.preventDefault();
     try {
+      console.log(usertypeRegister);
       await axios.post(
         URL + "/api/user/register",
         {
@@ -65,6 +66,7 @@ function Connection() {
       setEmailRegister("");
       setPasswordRegister("");
       setUserNameRegister("");
+      setUserTypeRegister("");
       setShowAlert(true);
     } catch (error) {
       console.error(error);
@@ -174,6 +176,23 @@ function Connection() {
                   className="form-connection-input"
                 />
               </div>
+
+              {/* add a listBox to choose user type (Student/employer) */}
+              <label>Type d'utilisateur: </label>
+              <div>
+                <select 
+                  name="user_type" 
+                  onChange={(e) => setUserTypeRegister(e.target.value)} 
+                  value={usertypeRegister} 
+                  className="form-connection-input"
+                  required>
+
+                  <option value="" disabled defaultValue>Fais ton choix</option>
+                  <option value="Etudiant">Étudiant</option>
+                  <option value="Employeur">Employeur</option>
+                </select>
+              </div>
+
               <button className="form-connection-submit">Valider</button>
               <p className="message">
                 Déjà un compte ?{"  "}
