@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3001;
 const URL = process.env.HOSTCONNECTION + "internships";
 const HttpError = require("./models/HttpError");
 const UserRoute = require("./routes/UserRoute");
+const FileRoute = require("./routes/FileRoute");
 const InternshipRoute = require("./routes/InternshipRoute");
 const EmailSysController = require("./routes/EmailSysRoute");
 const StudentRoute = require("./routes/StudentRoute");
