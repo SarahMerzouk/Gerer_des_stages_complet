@@ -120,7 +120,6 @@ function InternshipListStudent() {
           />
           <span className="name">Développement d'applications</span>
         </label>
-        ychgfchfcyfcyfcy
       */}
       </div>
       <div className="search-bar">
