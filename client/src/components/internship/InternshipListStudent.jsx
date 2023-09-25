@@ -96,6 +96,8 @@ function InternshipListStudent() {
           />
           <span className="name">Tous</span>
         </label>
+
+        {/*
         <label className="radio">
           <input
             type="radio"
