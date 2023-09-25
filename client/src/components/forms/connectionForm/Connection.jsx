@@ -58,7 +58,7 @@ function Connection() {
         {
           headers: {
             "Content-Type": "application/json",
-          },
+          }
         },
       );
       setEmailRegister("");
