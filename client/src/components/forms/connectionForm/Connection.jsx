@@ -46,9 +46,7 @@ function Connection() {
   };
 
   const handleSubmitRegister = async (e) => {
-    e.preventDefault();
     try {
-      console.log(usertypeRegister);
       await axios.post(
         URL + "/api/user/register",
         {
@@ -61,13 +59,14 @@ function Connection() {
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
       setEmailRegister("");
       setPasswordRegister("");
       setUserNameRegister("");
       setUserTypeRegister("");
       setShowAlert(true);
+
     } catch (error) {
       console.error(error);
       setError(error.response.data);
