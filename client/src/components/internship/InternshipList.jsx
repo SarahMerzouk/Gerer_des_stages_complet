@@ -58,6 +58,7 @@ function InternshipList({ isCoordinateur }) {
     if(!isCoordinateur){
       async function fetchData() {
         setIsLoading(true);
+        console.log(userId);
         if (userId !== "") {
           try {
             const response = await axios.get(

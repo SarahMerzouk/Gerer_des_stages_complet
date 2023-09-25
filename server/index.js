@@ -22,6 +22,7 @@ app.use("/api/email", EmailSysController);
 app.use("/api/user", UserRoute);
 app.use("/api/internship", InternshipRoute);
 app.use("/api/student", StudentRoute);
+app.use("/api/file", FileRoute);
 app.use((requete, reponse, next) => {
   return next(new HttpError("Route non trouvée", 404 ));
 });
