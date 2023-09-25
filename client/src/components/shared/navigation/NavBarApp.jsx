@@ -87,7 +87,7 @@ function NavBarApp({ role }) {
             id="basic-nav-dropdown"
           >
             <NavDropdown.Item as={Link} to="/profil">
-              Profil
+              Profile
             </NavDropdown.Item>
             <NavDropdown.Item as={Link} to="/logout">
               Se déconnecter
