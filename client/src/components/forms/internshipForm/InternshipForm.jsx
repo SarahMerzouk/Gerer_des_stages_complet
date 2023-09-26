@@ -53,8 +53,10 @@ function InternshipForm() {
       })
       .catch((error) => {
         handleShowAlert(true);
-        console.error(error);
+        console.log(error);
       });
+
+      window.location.reload();
   };
 
   const handleButtonClick = () => {
@@ -85,7 +87,7 @@ function InternshipForm() {
                   Formulaire d'inscription de milieu de stage
                 </h2>
                 <p>
-                  Stages réguliers ayant lieu à la session hiver Les stages sont
+                  Stages réguliers ayant lieu à la session d'hiver. Les stages sont
                   du 21 janvier au 3 mai 2019 (il est toutefois possible après
                   entente avec le coordonnateur de débuter le stage un peu plus
                   tôt) Sur réception de ce formulaire, le coordonnateur des

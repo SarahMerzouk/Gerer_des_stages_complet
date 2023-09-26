@@ -5,12 +5,8 @@ const app = express();
 require("dotenv").config();
 
 const mongoose = require("mongoose");
-
-const PORT = process.env.PORT || 3001; // Change port to 5000
-const URL = process.env.HOSTCONNECTION + "gestionTest";
-console.log(PORT)
-console.log(URL)
-
+const PORT = process.env.PORT || 3001;
+const URL = process.env.HOSTCONNECTION + "internships";
 const HttpError = require("./models/HttpError");
 const UserRoute = require("./routes/UserRoute");
 const InternshipRoute = require("./routes/InternshipRoute");
@@ -40,19 +36,18 @@ app.use((error, requete, reponse, next) => {
   });
 });
 
+mongoose.set("strictQuery", true);
+
 mongoose
   .connect(URL)
   .then(() => {
-    // app.listen(5000);
-    console.log("Connexion à la base de données réussie");
+    app.listen(5000);
+    console.error("Connexion à la base de données réussie");
   })
   .catch((erreur) => {
     console.error(erreur);
   });
 
-mongoose.set("strictQuery", true);
-
 app.listen(PORT, () => {
-  console.log(URL)
-  console.log("Server is running");
+  console.error("Server is running");
 });

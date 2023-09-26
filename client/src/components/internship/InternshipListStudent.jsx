@@ -96,6 +96,8 @@ function InternshipListStudent() {
           />
           <span className="name">Tous</span>
         </label>
+
+        {/*
         <label className="radio">
           <input
             type="radio"
@@ -118,6 +120,7 @@ function InternshipListStudent() {
           />
           <span className="name">Développement d'applications</span>
         </label>
+      */}
       </div>
       <div className="search-bar">
         <input
