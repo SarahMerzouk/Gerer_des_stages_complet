@@ -184,6 +184,28 @@ const verifyUser = async (req, res) => {
   }
 };
 
+const updateUser = async (req, res, next) => {
+  const userIdToUpdate = req.params.id; //ID de l'utilisateur
+  const updatedUserData = req.body; // Données mises à jour de l'utilisateur à partir du corps de la requête
+
+  try {
+    const user = await User.findById(userIdToUpdate);
+
+    if (!user) {
+      return next(new HttpError("Utilisateur non trouvé", 404));
+    }
+    user.username = updatedUserData.username;
+    user.email = updatedUserData.email;
+
+    await user.save(); // Enregistrez les modifications dans la base de données
+
+    res.status(200).json({ message: "Utilisateur mis à jour avec succès", user });
+  } catch (error) {
+    console.error(error);
+    next(new HttpError("Erreur lors de la mise à jour de l'utilisateur", 500));
+  }
+};
+
 exports.register = register;
 exports.login = login;
 exports.allUsers = allUsers;
@@ -192,3 +214,4 @@ exports.deleteUser = deleteUser;
 exports.verifyUser = verifyUser;
 exports.sendEmailPassword = sendEmailPassword;
 exports.updatePassword = updatePassword;
+exports.updateUser=updateUser;
