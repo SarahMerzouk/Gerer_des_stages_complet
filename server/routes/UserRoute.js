@@ -11,5 +11,6 @@ router.delete("/delete-user",verifyToken,userController.deleteUser);
 router.get("/:id/verify/:token",userController.verifyUser);
 router.post("/sendPswEmail",userController.sendEmailPassword);
 router.post("/changepassword",userController.updatePassword);
+router.post("/update-user", userController.updateUser);
 
 module.exports = router;
