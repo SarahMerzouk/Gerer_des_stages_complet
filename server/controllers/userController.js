@@ -192,23 +192,17 @@ const updateUser = async (req, res, next) => {
   // res.status(200).json({ message: "Utilisateur mis à jour avec succès", updatedUserData});
   console.log("0")
     const user = await User.findById(userIdToUpdate);
-    console.log(userIdToUpdate)
-    console.log("1")
     if (!user) {
       console.log("Utilisateur non trouvé")
       return next(new HttpError("Utilisateur non trouvé", 404));
     }
     user.username = updatedUserData.username;
     user.email = updatedUserData.email;
-    console.log("2")
     await user.save(); // Enregistrez les modifications dans la base de données
-    console.log("3")
     res.status(200).json({ message: "Utilisateur mis à jour avec succès", user });
-    console.log("4")
   } catch (error) {
     console.error(error);
     next(new HttpError("Erreur lors de la mise à jour de l'utilisateur", 500));
-    console.log("5")
   }
 };
 
