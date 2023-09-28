@@ -12,5 +12,7 @@ router.get("/:id/verify/:token",userController.verifyUser);
 router.post("/sendPswEmail",userController.sendEmailPassword);
 router.post("/changepassword",userController.updatePassword);
 router.post("/update-user", userController.updateUser);
+router.get("/:id", userController.getUserById);
+
 
 module.exports = router;

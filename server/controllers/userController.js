@@ -58,6 +58,7 @@ const login = async (req, res) => {
   }
 };
 
+
 const allUsers = async (requete, reponse, next) => {
   let users;
   try {
@@ -187,10 +188,8 @@ const verifyUser = async (req, res) => {
 
 const updateUser = async (req, res, next) => {
   try {
-  const userIdToUpdate = req.body.id; //ID de l'utilisateur
-  const updatedUserData = req.body; // Données mises à jour de l'utilisateur à partir du corps de la requête
-  // res.status(200).json({ message: "Utilisateur mis à jour avec succès", updatedUserData});
-  console.log("0")
+  const userIdToUpdate = req.body.id;
+  const updatedUserData = req.body;
     const user = await User.findById(userIdToUpdate);
     if (!user) {
       console.log("Utilisateur non trouvé")
@@ -198,11 +197,26 @@ const updateUser = async (req, res, next) => {
     }
     user.username = updatedUserData.username;
     user.email = updatedUserData.email;
-    await user.save(); // Enregistrez les modifications dans la base de données
+    await user.save();
     res.status(200).json({ message: "Utilisateur mis à jour avec succès", user });
   } catch (error) {
     console.error(error);
     next(new HttpError("Erreur lors de la mise à jour de l'utilisateur", 500));
+  }
+};
+
+const getUserById = async (req, res, next) => {
+  const userId = req.params.id;
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return next(new HttpError("Utilisateur non trouvé", 404));
+    }
+    res.status(200).json({ user });
+  } catch (error) {
+    console.error(error);
+    next(new HttpError("Erreur lors de la recherche de l'utilisateur", 500));
   }
 };
 
@@ -215,3 +229,4 @@ exports.verifyUser = verifyUser;
 exports.sendEmailPassword = sendEmailPassword;
 exports.updatePassword = updatePassword;
 exports.updateUser=updateUser;
+exports.getUserById = getUserById;
