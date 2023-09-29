@@ -53,7 +53,8 @@ function SectionFichiers() {
                 {
                     console.log("asdf");
                     console.log(fichier);
-                    return (<Fichier key={fichier.id} fichier={fichier} />);}
+                    return (<Fichier key={fichier.id} fichier={fichier} />);
+                }
             )}
             {fichiers?.length < 3 ? <FichiersForm reloadMethod={reloadMethod} /> : null}
         </div>
