@@ -51,5 +51,5 @@ mongoose
   });
 
 app.listen(PORT, () => {
-  console.error("Server is running");
+  console.error("Server is running" + " - " + PORT);
 });
