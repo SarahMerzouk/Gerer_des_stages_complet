@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../../../UserContext.jsx";
+import Fichiers from "../userFiles/Fichiers.jsx";
 import axios from "axios";
 import "./css/Profil.css";
 
@@ -11,6 +12,7 @@ function Profil() {
   const [oldName, setOldName] = useState("");
   const [oldEmail, setOldEmail] = useState("");
   const URL = "http://127.0.0.1:5001"; // HARDCODE
+
 
   useEffect(() => {
     getUserInfo(userId);
@@ -88,6 +90,10 @@ function Profil() {
         />
         <input type="submit" value="Appliquer les changements" />
       </form>
+
+      <div>
+        <Fichiers />
+      </div>
     </div>
   );
 }
