@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../../../UserContext.jsx";
-import Fichiers from "../userFiles/Fichiers.jsx";
+import SectionFichiers from "../userFiles/SectionFichiers.jsx";
 import axios from "axios";
 import "./css/Profil.css";
 
@@ -92,7 +92,7 @@ function Profil() {
       </form>
 
       <div>
-        <Fichiers />
+        <SectionFichiers />
       </div>
     </div>
   );

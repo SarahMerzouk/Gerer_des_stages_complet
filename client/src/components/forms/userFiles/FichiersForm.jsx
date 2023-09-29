@@ -1,9 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../../../UserContext.jsx";
 import axios from "axios";
-//import "./css/Fichiers.css";
 
-function Fichiers() {
+/**
+ * Form pour ajouter des fichiers au profil
+ * @returns Un form
+ */
+function FichiersForm(props) {
     const {userId} = useContext(UserContext);
     const {token} = useContext(UserContext);
     const [title, setTitle] = useState("Choisir");
@@ -15,20 +18,8 @@ function Fichiers() {
         setError("");
         event.preventDefault();
 
-        /*
-        console.log(title);
-        console.log(link);
-
-        console.log(title != "Choisir");
-        console.log(link != "");*/
-        
         if (title != "Choisir" && link != "") {
-
-           /* console.log(userId);
-            console.log(token);*/
-
             try {
-                console.log("HERE");
                 axios.post(URL + "/api/file/add-files", {
                     studentId: userId,
                     title: title,
@@ -41,9 +32,9 @@ function Fichiers() {
                         "Content-Type": "application/json"
                     }
                 });
-
                 setTitle("Choisir");
                 setLink("");
+                props.reloadMethod();
             } catch (error) {
                 console.error(error);
                 console.log(error);
@@ -89,4 +80,4 @@ function Fichiers() {
     );
 }
 
-export default Fichiers;
+export default FichiersForm;

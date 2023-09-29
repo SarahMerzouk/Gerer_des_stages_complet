@@ -1,19 +1,15 @@
-const fs = require("fs");
 const Files = require("../models/Files");
 const HttpError = require("../models/HttpError");
-const csvParser = require('csv-parser');
-const multer = require("multer");
-
 
 const getFiles = async (req, res, next) => {
-    const userId = req.body.userId;
+    const userId = req.query.userId;
     let files;
 
     try{
         files = await Files.find( { studentId: userId });
     }
     catch (err) {
-        return next(new HttpError("Erreur lors de la recherche des fichiers", 500));
+        return next(new HttpError("Erreur lors de la recherche des fichiers" + err.message, 500));
     }
 
     if (files || files.length > 0) {
