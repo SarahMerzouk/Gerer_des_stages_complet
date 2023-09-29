@@ -2,10 +2,15 @@
     color: black;
 }
 
-p {
+.p {
     color: black;
 }
 
-h2 {
+.h2 {
     color: black;  
 }
+.container {
+    border-radius: 5px;
+    /* background-color: #f2f2f2; */
+    padding: 20px;
+  }

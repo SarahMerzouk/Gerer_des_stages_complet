@@ -13,7 +13,6 @@ function Profil() {
   const [oldEmail, setOldEmail] = useState("");
   const URL = "http://127.0.0.1:5001"; // HARDCODE
 
-
   useEffect(() => {
     getUserInfo(userId);
   }, [userId]);
@@ -24,12 +23,12 @@ function Profil() {
 
   const getUserInfo = async (userId) => {
     try {
-      const response = await axios.get(URL+`/api/user/${userId}`);
+      const response = await axios.get(URL + `/api/user/${userId}`);
       const userData = response.data.user;
       setUpdatedName(userData.username);
       setUserEmail(userData.email);
-      setOldEmail(userData.email)
-      setOldName(userData.username)
+      setOldEmail(userData.email);
+      setOldName(userData.username);
     } catch (error) {
       console.error(error);
     }
@@ -40,26 +39,24 @@ function Profil() {
     const updatedUser = {
       username: updatedName,
       email: updatedEmail,
-      id: userId
+      id: userId,
     };
-    if(updatedUser.email==''){
-      updatedUser.email=oldEmail;
+    if (updatedUser.email === "") {
+      updatedUser.email = oldEmail;
     }
-    if(updatedUser.username==''){
-      updatedUser.username=oldName;
+    if (updatedUser.username === "") {
+      updatedUser.username = oldName;
     }
-    console.log(updatedUser)
+    console.log(updatedUser);
     try {
-      const response = await axios.post(
-        URL + "/api/user/update-user",
-        updatedUser
-      );
+      const response = await axios.post(URL + "/api/user/update-user", updatedUser);
       console.log(response);
       if (!response.data) {
         throw new Error(response.statusText);
       }
       setUpdatedName("");
       setUpdatedEmail("");
+      window.location.reload();
     } catch (error) {
       console.error(error);
       alert("Error updating user. Please try again later.");
@@ -67,33 +64,36 @@ function Profil() {
   };
 
   return (
-    <div className="container">
-      <form onSubmit={handleUserChange}>
-        <label htmlFor="username">Votre nom</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder={updatedName}
-          // value={updatedName}
-          onChange={(e) => setUpdatedName(e.target.value)}
-        />
+    <div>
+    <div className="container-connection">
+    <div className="register-form">
+        <form onSubmit={handleUserChange}>
+          <label htmlFor="username">Votre nom</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder={updatedName}
+            onChange={(e) => setUpdatedName(e.target.value)}
+          />
 
-        <label htmlFor="email">Votre adresse courriel</label>
-        <input
-          type="text"
-          id="email"
-          name="email"
-          placeholder={userEmail}
-          // value={userEmail} // Utilisez l'email de l'utilisateur actuel
-          onChange={(e) => setUpdatedEmail(e.target.value)}
-        />
-        <input type="submit" value="Appliquer les changements" />
-      </form>
-
-      <div>
+          <label htmlFor="email">Votre adresse courriel</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder={userEmail}
+            onChange={(e) => setUpdatedEmail(e.target.value)}
+          />
+          <input type="submit" value="Appliquer les changements" />
+        </form>
+        </div>
+        </div>
+        <div className="container-connection">
+        <div className="register-form">
         <SectionFichiers />
-      </div>
+        </div>
+    </div>
     </div>
   );
 }

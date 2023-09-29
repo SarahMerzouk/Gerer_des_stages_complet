@@ -46,8 +46,8 @@ function SectionFichiers() {
 
     return (
         <div>
-            <h2>Vos fichiers</h2>
-            <p>Maximum de 3 fichiers. Veuillez déposer vos fichiers par un service de stockage en ligne (ex: Google Drive, DropBox, etc.). 
+            <h2 className="h2">Vos fichiers</h2>
+            <p className="p">Maximum de 3 fichiers. Veuillez déposer vos fichiers par un service de stockage en ligne (ex: Google Drive, DropBox, etc.). 
             Assurez vous que l'accès soit public.</p>
             {fichiers?.map((fichier) =>
                 {

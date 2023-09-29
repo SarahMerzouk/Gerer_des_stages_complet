@@ -9,6 +9,7 @@ input[type=text], input[type], select, textarea {
   resize: vertical;
 }
 
+
 input[type=submit] {
   background-color: #b3c000;
   color: white;
@@ -27,6 +28,33 @@ input[type=submit]:hover {
   /* background-color: #f2f2f2; */
   padding: 20px;
 }
+.myContainerD {
+  padding: 20px; /* Ajoute un espace autour du contenu */
+  border-radius: 5px; /* Arrondit les coins du conteneur */
+  color: white; /* Change la couleur du texte à l'intérieur du conteneur */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Ajoute une ombre légère */
+  font-size: 16px; /* Modifie la taille de la police du texte */
+  display: flex; /* Utilise le modèle de boîte flexible pour organiser les éléments enfants */
+  flex-direction: column; /* Place les éléments enfants en colonnes */
+  align-items: center; /* Centre les éléments enfants horizontalement */
+  justify-content: center; /* Centre les éléments enfants verticalement */
+  text-align: center; /* Centre le texte horizontalement */
+}
+
 label{
   color:black;
+}
+.register-form {
+  margin-top: 50px;
+  background-color: #fff;
+  display: block;
+  padding: 1rem;
+  max-width: 850px;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.container-connection {
+  display: flex;
+  justify-content: center;
 }
