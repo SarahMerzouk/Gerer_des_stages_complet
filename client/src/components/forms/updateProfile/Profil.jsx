@@ -5,7 +5,7 @@ import axios from "axios";
 import "./css/Profil.css";
 
 function Profil() {
-  const { userId } = useContext(UserContext);
+  const { userId, role } = useContext(UserContext);
   const [userEmail, setUserEmail] = useState("");
   const [updatedEmail, setUpdatedEmail] = useState("");
   const [updatedName, setUpdatedName] = useState("");
@@ -89,11 +89,12 @@ function Profil() {
         </form>
         </div>
         </div>
+        { role === "Etudiant" ?
         <div className="container-connection">
-        <div className="register-form">
-        <SectionFichiers />
-        </div>
-    </div>
+          <div className="register-form">
+            <SectionFichiers />
+          </div>
+          </div>   : null }
     </div>
   );
 }
