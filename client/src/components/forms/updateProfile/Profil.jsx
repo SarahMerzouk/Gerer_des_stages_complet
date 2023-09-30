@@ -11,7 +11,7 @@ function Profil() {
   const [updatedName, setUpdatedName] = useState("");
   const [oldName, setOldName] = useState("");
   const [oldEmail, setOldEmail] = useState("");
-  const URL = "http://127.0.0.1:5001"; // HARDCODE
+  const URL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
     getUserInfo(userId);
