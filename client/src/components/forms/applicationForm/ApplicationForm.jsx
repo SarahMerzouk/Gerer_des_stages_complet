@@ -95,6 +95,8 @@ function ApplicationForm() {
         title="Message"
         message="L'email à bien été envoyé"
       />
+      
+      {/*
       <div className="formbold-main-wrapper-application">
         <div className="formbold-form-wrapper-application">
           <form className="form-application" onSubmit={handleSubmit}>
@@ -160,8 +162,10 @@ function ApplicationForm() {
             </div>
             <button className="formbold-btn">Ajouter</button>
           </form>
+          
         </div>
       </div>
+      */}
     </div>
   );
 }
