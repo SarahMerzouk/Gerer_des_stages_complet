@@ -1,3 +1,7 @@
+// Cette page n'est pas utilisée, car je n'ai pas besoin d'un formulaire pour l'application
+// Je veux juste un messag qui me dit que la candiature est envoyée 
+// Cependant, laissez-là quand même, car elle peut nous être utilise après
+
 import React, { useState, useContext, useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { useHistory } from "react-router-dom";
@@ -95,8 +99,6 @@ function ApplicationForm() {
         title="Message"
         message="L'email à bien été envoyé"
       />
-      
-      {/*
       <div className="formbold-main-wrapper-application">
         <div className="formbold-form-wrapper-application">
           <form className="form-application" onSubmit={handleSubmit}>
@@ -162,10 +164,8 @@ function ApplicationForm() {
             </div>
             <button className="formbold-btn">Ajouter</button>
           </form>
-          
         </div>
       </div>
-      */}
     </div>
   );
 }
