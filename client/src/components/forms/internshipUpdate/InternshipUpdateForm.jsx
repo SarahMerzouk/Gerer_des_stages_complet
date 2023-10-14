@@ -3,6 +3,7 @@ import axios from "axios";
 import "./css/InternshipUpdateForm.css";
 import UserContext from "../../../UserContext";
 import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 function InternshipUpdateForm() {
   const { internshipsList, handleInternshipsList, internship } =
@@ -16,6 +17,7 @@ function InternshipUpdateForm() {
   const [contactPhone, setContactPhone] = useState("");
   const [internshipDescription, setInternshipDescription] = useState("");
   const [internshipType, setInternshipType] = useState("");
+  const [internshipTitle, setInternshipTitle] = useState("");
   const [nbPositions, setNbPositions] = useState("");
   const [internshipSalary, setInternshipSalary] = useState("");
   const history = useHistory();
@@ -34,6 +36,7 @@ function InternshipUpdateForm() {
       setContactName(internship.contactname);
       setContactPhone(internship.contactphone);
       setInternshipDescription(internship.internshipdescription);
+      setInternshipTitle(internship.title);
       setInternshipType(internship.internshiptype);
       setNbPositions(internship.nbpositions);
       setInternshipSalary(internship.salary);
@@ -47,9 +50,10 @@ function InternshipUpdateForm() {
     internship.contactname,
     internship.contactphone,
     internship.internshipdescription,
+    internship.internshipTitle,
     internship.internshiptype,
     internship.nbpositions,
-    internship.salary,
+    internship.salary
   ]);
 
   const handleSubmit = async (e) => {
@@ -64,6 +68,7 @@ function InternshipUpdateForm() {
       nbpositions: nbPositions,
       internshipdescription: internshipDescription,
       salary: internshipSalary,
+      internshiptypetitle: internshipTitle
     };
     const internshipId = internship._id;
     axios
@@ -75,7 +80,8 @@ function InternshipUpdateForm() {
           ...internshipsList,
           response.data.updatedInternship,
         ]);
-        alert("Modification réussi !");
+        // alert("Modification réussie !");
+        <Redirect to="/Employeur/publierstage" />
       })
       .catch((error) => {
         console.error(error);
@@ -89,8 +95,21 @@ function InternshipUpdateForm() {
           <form className="form" onSubmit={handleSubmit}>
             <div className="formbold-form-title">
               <h2 className="">
-                Modifier le stage : {internship.internshiptype}
+                Modifier le stage : {internship.internship}
               </h2>
+            </div>
+            <div className="formbold-mb-3">
+              <label className="inputText">
+                Titre du Stage
+                <input
+                  type="text"
+                  placeholder={internshipTitle}
+                  className="formbold-form-input"
+                  value={internshipTitle}
+                  onChange={(e) => setInternshipTitle(e.target.value)}
+                  required
+                />
+              </label>
             </div>
             <div className="formbold-input-flex">
               <div>
@@ -228,7 +247,7 @@ function InternshipUpdateForm() {
                 </label>
               </div>
             </div>
-            <button className="formbold-btn">Ajouter</button>
+            <button className="formbold-btn">Modifier</button>
           </form>
         </div>
       </div>
