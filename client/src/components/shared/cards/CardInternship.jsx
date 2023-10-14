@@ -122,6 +122,7 @@ function CardInternship({ internship }) {
         <div className="description-text">
           <p>{internship.internshipdescription}</p>
         </div>
+        <button className="app-button">Voir les soumissions</button>
       </div>
     </div>
   );
