@@ -4,11 +4,19 @@ import { NavLink } from "react-router-dom";
 import UserContext from "../../../UserContext";
 import "./css/CardInternship.css";
 import axios from "axios";
+import { useDropzone } from "react-dropzone";
+import { useHistory } from "react-router-dom";
 
 function CardInternship({ internship }) {
   const URL = process.env.REACT_APP_BASE_URL;
   const { handleInternship, userId } = useContext(UserContext);
   const [isInList, setIsInList] = useState(false);
+  const [message, setMessage] = useState("");
+  const [isSubmitting,setIsSubmitting] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const history = useHistory();
+  const token = localStorage.getItem("jwtToken");
+  axios.defaults.headers.common["x-access-token"] = token;
 
   const handleUpdateInternship = () => {
     handleInternship(internship);
@@ -27,6 +35,38 @@ function CardInternship({ internship }) {
         console.error(error);
       });
   })
+
+  useEffect(() => {
+    if (internship.companyname === undefined) {
+      history.go(-1);
+    }
+  });
+
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+
+      handleShowAlert(true);
+      setIsSubmitting(false);
+      
+      await axios.post(URL + "/api/internship/add-Applicant", {
+        internshipId: internship._id,
+        userId: userId,
+      })
+        .catch((error) => {
+          console.error(error);
+        });
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="wrapper">
@@ -76,11 +116,11 @@ function CardInternship({ internship }) {
           <p>{internship.internshipdescription}</p>
         </div>
         <div className="app-button-container">
-          {isInList ? (<button className="app-button-disabled"> Vous avez déjà appliquer</button>) : (<NavLink
+          {isInList ? (<button className="app-button-disabled"> Application envoyée </button>) : (<NavLink
             onClick={handleUpdateInternship}
             to="/Etudiant/applicationForm"
           >
-            <button className="app-button">Appliquer</button>
+            <button className="app-button" onClick={handleSubmit}>Appliquer</button>
           </NavLink>)}
 
         </div>

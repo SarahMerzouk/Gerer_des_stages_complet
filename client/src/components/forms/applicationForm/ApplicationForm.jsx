@@ -1,3 +1,7 @@
+// Cette page n'est pas utilisée, car je n'ai pas besoin d'un formulaire pour l'application
+// Je veux juste un messag qui me dit que la candiature est envoyée 
+// Cependant, laissez-là quand même, car elle peut nous être utilise après
+
 import React, { useState, useContext, useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { useHistory } from "react-router-dom";
