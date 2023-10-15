@@ -1,15 +1,10 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import React from "react";
 
-function InternshipPage() {
-  
-    const { id } = useParams();
-    console.log("Stage avec id:", id);
-    return (
-      <div>
-        <h1>Liste d'étudiants : </h1>
-      </div>
+function InternshipPage(){
+    return(
+        <div>
+          <p>Liste d'étudiants</p>
+        </div>
     );
 }
-
 export default InternshipPage;

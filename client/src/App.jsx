@@ -204,7 +204,7 @@ function App() {
               <Accueil />
             </Route>
 
-            <Route path="/Employeur/internship/:internshiptitle">
+            <Route path="/Employeur/internship/:internshiptitle" component={InternshipPage}>
               <InternshipPage />
             </Route>
 

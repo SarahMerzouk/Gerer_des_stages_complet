@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { getDaysSince } from "../../../utils/getDaySince";
 import SettingForm from "../../forms/settingForm/SettingForm";
-import StudentsListForInternship from "../../internship/StudentsListForIntership";
 import "./css/CardInternship.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
