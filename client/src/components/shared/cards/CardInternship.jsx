@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { getDaysSince } from "../../../utils/getDaySince";
 import SettingForm from "../../forms/settingForm/SettingForm";
+import StudentsListForInternship from "../../internship/StudentsListForIntership";
 import "./css/CardInternship.css";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function CardInternship({ internship }) {
   const [showForm, setShowForm] = useState(false);
@@ -122,7 +124,9 @@ function CardInternship({ internship }) {
         <div className="description-text">
           <p>{internship.internshipdescription}</p>
         </div>
-        <button className="app-button">Voir les soumissions</button>
+        <Link to={`/Employeur/internship/${internship._id}`}>
+          <button className="app-button" onClick={() => console.log("Button Clicked")}>Voir les soumissions</button>
+        </Link>
       </div>
     </div>
   );

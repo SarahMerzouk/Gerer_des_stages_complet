@@ -25,6 +25,7 @@ import EmailChecker from "./components/email/EmailChecker.jsx";
 import EnterEmail from "./components/email/EnterEmail";
 import ChangePassword from "./components/email/ChangePassword";
 import Profil from "./components/forms/updateProfile/Profil";
+import InternshipPage from "./components/internship/InternshipPage";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -202,6 +203,11 @@ function App() {
             <Route path="">
               <Accueil />
             </Route>
+
+            <Route path="/Employeur/internship/:id">
+              <InternshipPage />
+            </Route>
+
             <Redirect to="/" />
           </Switch>
         </main>
