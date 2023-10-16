@@ -123,7 +123,11 @@ function CardInternship({ internship }) {
         <div className="description-text">
           <p>{internship.internshipdescription}</p>
         </div>
-        <Link to="/Employeur/internship/">
+        <Link to=
+        {{
+          pathname: "/Employeur/internship/",
+          state:internship,
+        }}>
           <button className="app-button">Voir les soumissions</button>
         </Link>
       </div>

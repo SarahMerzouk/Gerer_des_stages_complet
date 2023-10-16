@@ -1,9 +1,14 @@
 import React from "react";
+import { useLocation } from "react-router";
 
 function InternshipPage(){
+  const location = useLocation();
+  const internship = location.state;
+  console.log(internship);
+
     return(
         <div>
-          <p>Liste d'étudiants</p>
+          <p>{internship.internshiptitle}</p>
         </div>
     );
 }
