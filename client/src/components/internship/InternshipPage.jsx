@@ -2,12 +2,15 @@ import React, { useEffect, useState, useContext } from "react";
 import { useLocation } from "react-router";
 import "./css/internshipPage.css";
 import axios from "axios";
+import Loading from "../shared/loading/loading";
 
 function InternshipPage() {
   const location = useLocation();
   const internship = location.state;
   const nbCandidatures = internship.applicantlist.length;
   const URL = process.env.REACT_APP_BASE_URL;
+  const [studentsList, setStudentsList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function getUser(userId) {
     const response = await axios.get(
@@ -16,8 +19,7 @@ function InternshipPage() {
         params: { id: userId },
       }
     );
-    
-    console.log("response: ", response.data);
+
     return response.data;
   }
 
@@ -38,13 +40,34 @@ function InternshipPage() {
     return arrayOfStudents;
   }
 
-  async function fetchData() {
-    const students = await getStudentsForInternship();
-    console.log(students);
+  useEffect(() => {
+    async function fetchData() {
+      setIsLoading(true);
+
+      if (studentsList != null) {
+        try {
+          const students = await getStudentsForInternship();
+
+          // vérifier si ma liste à été mise à jour avant de modifier
+          // pour éviter une boucle infinie
+          // useEffect provoque un nouveau rendu à chaque changement de studentsList, so ça fait une boucle infinie sinon
+          if (JSON.stringify(students) !== JSON.stringify(studentsList)) {
+            setStudentsList(students);
+          }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
+      }
+      }
+    }
+  
+    fetchData();
+  }, [studentsList]);
+
+  if (isLoading) {
+    return <Loading/>
   }
-
-  console.log(getStudentsForInternship());
-
   return(
         <div>
           <h1>{internship.internshiptitle}</h1>
@@ -53,20 +76,32 @@ function InternshipPage() {
           <p>{internship.contactphone}</p>
 
           <h3>Liste d'applicants : </h3>
-          {nbCandidatures !== 0 && (<div>
+          {nbCandidatures !== 0 && (
+          <div>
             <table className="table">
-              <tr>
-                <th>Nom de l'étudiant</th>
-                <th>Courriel de l'étudiant</th>
-                <th>Date de soumission de la candidature</th>
-              </tr>
+              <thead>
+                <tr>
+                  <th>Nom de l'étudiant</th>
+                  <th>Courriel de l'étudiant</th>
+                  <th>Date de soumission de la candidature</th>
+                </tr>
+              </thead>
 
-              <tr>
-                <th>test</th>
-                <th>test</th>
-                <th>test</th>
-              </tr>
-
+              <tbody>
+                {console.log(studentsList)}
+                {studentsList != null && (
+                  <>
+                    {studentsList.map((student, index) => (
+                      <tr key={index}>
+                        {console.log(student)}
+                        <td>{student.username || "N/A"}</td>
+                        <td>{student.email || "N/A"}</td>
+                        <td>{/* Add the date property here */}</td>
+                      </tr>
+                    ))}
+                  </>
+                )}
+              </tbody>
             </table>
           </div>)}
 

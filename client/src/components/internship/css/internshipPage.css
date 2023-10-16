@@ -2,7 +2,15 @@
     border: solid 2px black;
 }
 
-.table tr th {
+.table tr{
     border: solid 2px black;
     font-style: none;
+}
+
+.table th {
+    border: solid 2px black;
+}
+
+.table td {
+    border: solid 2px black;
 }
