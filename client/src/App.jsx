@@ -197,15 +197,17 @@ function App() {
                 return <Redirect to="/" />;
               }}
             />
-              <Route path="/users/:id/editAccount/:token">
-                {/* <EditAccount/> */}
-              </Route>
-            <Route path="">
-              <Accueil />
+            
+            <Route path="/Employeur/internship/">
+              <InternshipPage />
             </Route>
 
-            <Route path="/Employeur/internship/:internshiptitle" component={InternshipPage}>
-              <InternshipPage />
+            <Route path="/users/:id/editAccount/:token">
+                {/* <EditAccount/> */}
+            </Route>
+            
+            <Route path="">
+              <Accueil />
             </Route>
 
             <Redirect to="/" />

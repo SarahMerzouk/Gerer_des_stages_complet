@@ -123,8 +123,8 @@ function CardInternship({ internship }) {
         <div className="description-text">
           <p>{internship.internshipdescription}</p>
         </div>
-        <Link to={`/Employeur/internship/${internship.internshiptitle}`}>
-          <button className="app-button" onClick={() => console.log("Button Clicked")}>Voir les soumissions</button>
+        <Link to="/Employeur/internship/">
+          <button className="app-button">Voir les soumissions</button>
         </Link>
       </div>
     </div>
