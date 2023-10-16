@@ -7,34 +7,43 @@ function InternshipPage() {
   const location = useLocation();
   const internship = location.state;
   const nbCandidatures = internship.applicantlist.length;
+  const URL = process.env.REACT_APP_BASE_URL;
 
   async function getUser(userId) {
     const response = await axios.get(
-      URL + "api/user/",
+      URL + "/api/user/" + userId,
       {
         params: { id: userId },
       }
     );
-
+    
+    console.log("response: ", response.data);
     return response.data;
   }
 
-  function getStudentsForInternship(){
+  async function getStudentsForInternship(){
     let arrayOfStudents = [];
-    let student;
 
     for (let i = 0; i < nbCandidatures; i++) {
+      const userId = internship.applicantlist[i];
+  
       try {
-        student = getUser(internship.applicantlist[i]);
-        console.log("test", student);
+        const student = await getUser(userId);
         arrayOfStudents.push(student);
       } catch (error) {
-          console.error(error);
+        console.error(error);
       }
-      return arrayOfStudents;
     }
+
+    return arrayOfStudents;
   }
-  getStudentsForInternship();
+
+  async function fetchData() {
+    const students = await getStudentsForInternship();
+    console.log(students);
+  }
+
+  console.log(getStudentsForInternship());
 
   return(
         <div>
@@ -43,8 +52,8 @@ function InternshipPage() {
           <p>{internship.contactemail}</p>
           <p>{internship.contactphone}</p>
 
+          <h3>Liste d'applicants : </h3>
           {nbCandidatures !== 0 && (<div>
-            <h3>Liste d'applicants : </h3>
             <table className="table">
               <tr>
                 <th>Nom de l'étudiant</th>
