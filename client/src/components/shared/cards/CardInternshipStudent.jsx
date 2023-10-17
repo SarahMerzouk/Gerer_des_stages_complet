@@ -66,6 +66,8 @@ function CardInternship({ internship }) {
       console.error("Error sending email:", error);
       setIsSubmitting(false);
     }
+
+    window.location.reload();
   };
 
   return (
@@ -116,13 +118,9 @@ function CardInternship({ internship }) {
           <p>{internship.internshipdescription}</p>
         </div>
         <div className="app-button-container">
-          {isInList ? (<button className="app-button-disabled"> Application envoyée </button>) : (<NavLink
-            onClick={handleUpdateInternship}
-            to="/Etudiant/applicationForm"
-          >
-            <button className="app-button" onClick={handleSubmit}>Appliquer</button>
-          </NavLink>)}
-
+          {isInList ?
+           (<button className="app-button-disabled"> Application envoyée </button>) 
+           : <button className="app-button" onClick={handleSubmit}>Appliquer</button>}
         </div>
       </div>
     </div>
