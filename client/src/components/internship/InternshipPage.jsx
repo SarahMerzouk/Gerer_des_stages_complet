@@ -90,9 +90,8 @@ function InternshipPage() {
                     {studentsList && studentsList.map((student) => (
                       <tr key={student.__id}>
                         {/* si l'étudiant existe */}
-                        {console.log("lol", student.username)}
-                        <td>{student?.username || "N/A"}</td>
-                        <td>{student?.email || "N/A"}</td>
+                        <td>{student?.user.username || "N/A"}</td>
+                        <td>{student?.user.email || "N/A"}</td>
                         <td>{/* Add the date property here */}</td>
                       </tr>
                     ))}
