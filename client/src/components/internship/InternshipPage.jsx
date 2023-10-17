@@ -40,6 +40,41 @@ function InternshipPage() {
     return arrayOfStudents;
   }
 
+  function bonStage(user) {
+    const taille = user.stagesInscrits.length;
+    let bonStage = false;
+    let date = null;
+    let index = null;
+
+    const options = {
+      weekday: 'long', // full day name
+      year: 'numeric',
+      month: 'long', // full month name
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      timeZoneName: 'short',
+      timeZone: 'America/Toronto', // Canadian time zone (adjust as needed)
+    };
+
+    for (let i = 0; i < taille; i ++) {
+      console.log(internship._id);
+      if (user.stagesInscrits[i] === internship._id) {
+        bonStage = true;
+        index = i;
+        break;
+      }
+    }
+
+    if (bonStage) {
+      date = user.datesDeSoumission[index];
+    }
+
+    const formattedDate = date.toLocaleString('en-CA', options);
+    return formattedDate;
+  }
+
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
@@ -92,7 +127,7 @@ function InternshipPage() {
                         {/* si l'étudiant existe */}
                         <td>{student?.user.username || "N/A"}</td>
                         <td>{student?.user.email || "N/A"}</td>
-                        <td>{/* Add the date property here */}</td>
+                        <td>{bonStage(student?.user)}</td>
                       </tr>
                     ))}
                   </>
