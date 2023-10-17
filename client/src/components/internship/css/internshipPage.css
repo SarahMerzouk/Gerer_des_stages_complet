@@ -40,3 +40,8 @@
     background-color: #dfdddc;
     border-radius: 5px;
 }
+
+.noSoumission {
+   color: grey;
+   text-align: center;
+}

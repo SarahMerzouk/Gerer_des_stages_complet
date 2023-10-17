@@ -190,12 +190,14 @@ function InternshipPage() {
                   </tbody>
                 </table>
               </div>)}
+  
+              <div>
+                {nbCandidatures === 0 && (<div>
+                  <p className="noSoumission">Aucune soumission</p>
+                </div>)}
+              </div>
             </div>
           </div>
-
-          {nbCandidatures === 0 && (<div>
-            <p>Aucune soumission</p>
-          </div>)}
         </div>
   );
 }
