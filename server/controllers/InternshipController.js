@@ -1,4 +1,5 @@
 const Internship = require("../models/Internship");
+const User = require("../models/User");
 const HttpError = require("../models/HttpError");
 const sendEmail = require("../utils/sendEmail");
 const mongoose = require("mongoose");
@@ -178,13 +179,25 @@ const addApplicant = async (req, res, next) => {
 
   try {
     const internship = await Internship.findById(internshipId);
+    const user = await User.findById(userId);; // étudiant
+
     if (!internship) {
       return next(new HttpError("Internship not found", 404));
     }
 
     if (!internship.applicantlist.includes(userId)) {
       internship.applicantlist.push(userId);
+
+      // ajout du stage sur la liste de stages de l'utilisateur 
+      // permet d'aider à avoir la bonne date de soumission pour le bon stage
+      // car un étudiant peut être inscrit à plusieurs stages
+      // alors une date pour un stage
+      user.datesDeSoumission.push(Date.now());
+      user.stagesInscrits.push(internshipId);
+
       await internship.save();
+      await user.save();
+
       res
         .status(200)
         .json({ message: "User added to the application list successfully" });

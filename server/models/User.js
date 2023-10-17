@@ -10,6 +10,8 @@ const userSchema = new Schema({
   usertype: { type: String, required: true },
   creationdate: { type: Date, default: Date.now},
   verified: {type: Boolean, default: true},
+  datesDeSoumission :[{type: Date, default: null}],
+  stagesInscrits :[{type: mongoose.Types.ObjectId, ref: "InternshipId", default: null}],
 });
 
 userSchema.pre("save", async function (next) {
