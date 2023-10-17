@@ -43,21 +43,23 @@ function InternshipPage() {
   function bonStage(user) {
     const taille = user.stagesInscrits.length;
     let bonStage = false;
-    let date = null;
+    let originalDateString = null;
+    let originalDate = null;
     let index = null;
 
+    // pour le formatage de mes dates
     const options = {
-      weekday: 'long', // full day name
       year: 'numeric',
-      month: 'long', // full month name
+      month: 'short',
       day: 'numeric',
       hour: 'numeric',
       minute: 'numeric',
       second: 'numeric',
       timeZoneName: 'short',
-      timeZone: 'America/Toronto', // Canadian time zone (adjust as needed)
+      timeZone: 'America/New_York', 
     };
 
+    // récupérer l'id du stage inscrit
     for (let i = 0; i < taille; i ++) {
       console.log(internship._id);
       if (user.stagesInscrits[i] === internship._id) {
@@ -67,11 +69,15 @@ function InternshipPage() {
       }
     }
 
+    // récupérer la date liée au stage
     if (bonStage) {
-      date = user.datesDeSoumission[index];
+      originalDateString = user.datesDeSoumission[index];
     }
 
-    const formattedDate = date.toLocaleString('en-CA', options);
+    // formater la date pour que ce soit en heure de la zone ou nous sommes
+    originalDate = new Date(originalDateString);
+    const formattedDate = new Intl.DateTimeFormat('en-CA', options).format(originalDate);
+
     return formattedDate;
   }
 
