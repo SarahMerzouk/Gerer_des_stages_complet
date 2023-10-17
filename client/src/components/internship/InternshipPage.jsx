@@ -43,22 +43,19 @@ function InternshipPage() {
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
+      try {
+        const students = await getStudentsForInternship();
 
-      if (studentsList != null) {
-        try {
-          const students = await getStudentsForInternship();
-
-          // vérifier si ma liste à été mise à jour avant de modifier
-          // pour éviter une boucle infinie
-          // useEffect provoque un nouveau rendu à chaque changement de studentsList, so ça fait une boucle infinie sinon
-          if (JSON.stringify(students) !== JSON.stringify(studentsList)) {
-            setStudentsList(students);
-          }
+        // vérifier si ma liste à été mise à jour avant de modifier
+        // pour éviter une boucle infinie
+        // useEffect provoque un nouveau rendu à chaque changement de studentsList, so ça fait une boucle infinie sinon
+        if (JSON.stringify(students) !== JSON.stringify(studentsList)) {
+          setStudentsList(students);
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
         setIsLoading(false);
-      }
       }
     }
   
@@ -88,14 +85,14 @@ function InternshipPage() {
               </thead>
 
               <tbody>
-                {console.log(studentsList)}
-                {studentsList != null && (
+                {studentsList && (
                   <>
-                    {studentsList.map((student, index) => (
-                      <tr key={index}>
-                        {console.log(student)}
-                        <td>{student.username || "N/A"}</td>
-                        <td>{student.email || "N/A"}</td>
+                    {studentsList && studentsList.map((student) => (
+                      <tr key={student.__id}>
+                        {/* si l'étudiant existe */}
+                        {console.log("lol", student.username)}
+                        <td>{student?.username || "N/A"}</td>
+                        <td>{student?.email || "N/A"}</td>
                         <td>{/* Add the date property here */}</td>
                       </tr>
                     ))}
