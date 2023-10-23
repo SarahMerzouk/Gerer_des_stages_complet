@@ -48,7 +48,7 @@ function NavBarApp({ role }) {
             )}
             {role === "Employeur" && (
               <NavDropdown.Item as={Link} to={`/${role}/publierstage`}>
-                Publier Stage
+                Gestion des stages
               </NavDropdown.Item>
             )}
             {role === "Coordinateur" && (
