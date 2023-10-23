@@ -29,13 +29,13 @@ Bonjour,
 
 Un nouveau stage a été créé sur notre plateforme. Voici les détails :
 
+- Titre du stage : ${newInternship.internshiptitle}
 - Nom du contact : ${newInternship.contactname}
 - Email du contact : ${newInternship.contactemail}
 - Téléphone du contact : ${newInternship.contactphone}
 - Nom de l'entreprise : ${newInternship.companyname}
 - Adresse de l'entreprise : ${newInternship.companyadresse}
 - Type de stage : ${newInternship.internshiptype}
-- Titre du stage : ${newInternship.internshiptitle}
 - Nombre de positions disponibles : ${newInternship.nbpositions}
 - Description du stage : ${newInternship.internshipdescription}
 - Salaire : ${newInternship.salary}

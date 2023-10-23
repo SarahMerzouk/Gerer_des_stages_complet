@@ -1,4 +1,5 @@
 .InternshipList {
+  user-select: none;
   position: relative;
   display: inline-block;
   justify-content: center;
@@ -39,13 +40,13 @@
   border-radius: 0.5rem;
   border: none;
   padding: 0.2rem 0;
-  color: rgba(51, 65, 85, 1);
+  color: #B3C000;
   transition: all 0.15s ease-in-out;
   font-size: 17px;
 }
 
 .radio-inputs .radio input:checked + .name {
-  background-color: #1f2f53;
+  background-color: #B3C000;
   color: white;
 }
 .search-bar {
@@ -84,7 +85,7 @@
 .search-input:focus {
   outline: 0;
   background-position: 100% center;
-  border:solid #1f2f53 1px;
+  border:solid #B3C000 1px;
   border-radius: 5px;
 }
 

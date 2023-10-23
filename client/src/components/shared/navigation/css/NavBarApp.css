@@ -1,6 +1,7 @@
 @import url("https://fonts.cdnfonts.com/css/product-sans");
 
 .main-header {
+  user-select: none;
   font-family: "Product Sans", sans-serif !important;
   width: 100% !important;
   height: 6rem !important;

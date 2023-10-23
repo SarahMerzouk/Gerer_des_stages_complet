@@ -69,7 +69,7 @@ function InternshipForm() {
         show={showAlert}
         onClose={handleCloseAlert}
         title="Error"
-        message="Il y a eu une erreur, contacter sylvain.labranche@cmontmorency.qc.ca"
+        message="Il y a eu une erreur, contactez sylvain.labranche@cmontmorency.qc.ca"
       />
       <button className="button" onClick={handleButtonClick}>
         {showForm ? "X" : "Ajouter Stage"}

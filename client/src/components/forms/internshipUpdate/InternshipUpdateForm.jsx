@@ -36,7 +36,7 @@ function InternshipUpdateForm() {
       setContactName(internship.contactname);
       setContactPhone(internship.contactphone);
       setInternshipDescription(internship.internshipdescription);
-      setInternshipTitle(internship.title);
+      setInternshipTitle(internship.internshiptitle);
       setInternshipType(internship.internshiptype);
       setNbPositions(internship.nbpositions);
       setInternshipSalary(internship.salary);
@@ -50,7 +50,7 @@ function InternshipUpdateForm() {
     internship.contactname,
     internship.contactphone,
     internship.internshipdescription,
-    internship.internshipTitle,
+    internship.internshiptitle,
     internship.internshiptype,
     internship.nbpositions,
     internship.salary
@@ -68,7 +68,7 @@ function InternshipUpdateForm() {
       nbpositions: nbPositions,
       internshipdescription: internshipDescription,
       salary: internshipSalary,
-      internshiptypetitle: internshipTitle
+      internshiptitle: internshipTitle, 
     };
     const internshipId = internship._id;
     axios
@@ -80,8 +80,8 @@ function InternshipUpdateForm() {
           ...internshipsList,
           response.data.updatedInternship,
         ]);
-        // alert("Modification réussie !");
-        <Redirect to="/Employeur/publierstage" />
+        alert("Modification réussie !");
+        history.push("/Employeur/publierstage");
       })
       .catch((error) => {
         console.error(error);
@@ -98,12 +98,13 @@ function InternshipUpdateForm() {
                 Modifier le stage : {internship.internship}
               </h2>
             </div>
+            {console.log({internshipTitle})} 
             <div className="formbold-mb-3">
               <label className="inputText">
                 Titre du Stage
                 <input
                   type="text"
-                  placeholder={internshipTitle}
+                  placeholder="Titre de mon stage"
                   className="formbold-form-input"
                   value={internshipTitle}
                   onChange={(e) => setInternshipTitle(e.target.value)}
