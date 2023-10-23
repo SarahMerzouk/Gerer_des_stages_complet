@@ -26,6 +26,7 @@ import EnterEmail from "./components/email/EnterEmail";
 import ChangePassword from "./components/email/ChangePassword";
 import Profil from "./components/forms/updateProfile/Profil";
 import InternshipPage from "./components/internship/InternshipPage";
+import PageCandidat from "./components/forms/userFiles/PageCandidat";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -200,6 +201,10 @@ function App() {
             
             <Route path="/Employeur/internship/">
               <InternshipPage />
+            </Route>
+
+            <Route path="/Employeur/candidature/">
+              <PageCandidat />
             </Route>
 
             <Route path="/users/:id/editAccount/:token">

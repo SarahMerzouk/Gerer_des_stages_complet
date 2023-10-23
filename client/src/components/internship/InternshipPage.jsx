@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import "./css/internshipPage.css";
 import axios from "axios";
 import Loading from "../shared/loading/loading";
+import {Link} from 'react-router-dom';
 
 function InternshipPage() {
   const location = useLocation();
@@ -106,6 +107,7 @@ function InternshipPage() {
   if (isLoading) {
     return <Loading/>
   }
+
   return(
         <div>
           <div className="container-connection">
@@ -171,6 +173,7 @@ function InternshipPage() {
                       <th>Nom de l'étudiant</th>
                       <th>Courriel de l'étudiant</th>
                       <th>Date de soumission de la candidature</th>
+                      <th>Voir la candidature</th>
                     </tr>
                   </thead>
 
@@ -183,6 +186,14 @@ function InternshipPage() {
                             <td>{student?.user.username || "N/A"}</td>
                             <td>{student?.user.email || "N/A"}</td>
                             <td>{bonStage(student?.user)}</td>
+
+                            <td> <Link to=
+                            {{
+                            pathname: "/Employeur/candidature/",
+                            state:student,
+                            }}>
+                              Voir les détails
+                            </Link></td>
                           </tr>
                         ))}
                       </>
