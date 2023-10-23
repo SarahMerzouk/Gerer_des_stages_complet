@@ -111,8 +111,10 @@ function InternshipPage() {
           <div className="container-connection">
             <div>
               <h1>{internship.internshiptitle}</h1>
-
               <div>
+                <div className="ContactEmp">
+                  Contact de l'employeur:
+                </div>
                 <span className="card-info-element">
                   <svg
                   xmlns="http://www.w3.org/2000/svg"
