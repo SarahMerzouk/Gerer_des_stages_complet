@@ -33,7 +33,7 @@ function SectionFichiers() {
         }
     }
 
-    if (!fichiers && userId != "")
+    if (!fichiers && userId !== "")
     {
         searchFiles();
     }
@@ -41,7 +41,6 @@ function SectionFichiers() {
 
     function reloadMethod() {
         window.location.reload();
-        //FAIRE ATTENTION, CELA POURRAIS POTENTIELLEMENT DECONNECTER UN USER
     }
 
     return (
@@ -51,8 +50,6 @@ function SectionFichiers() {
             Assurez vous que l'accès soit public.</p>
             {fichiers?.map((fichier) =>
                 {
-                    console.log("asdf");
-                    console.log(fichier);
                     return (<Fichier key={fichier.id} fichier={fichier} />);
                 }
             )}
