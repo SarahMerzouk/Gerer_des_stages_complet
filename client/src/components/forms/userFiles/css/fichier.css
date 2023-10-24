@@ -11,6 +11,53 @@
 }
 .container {
     border-radius: 5px;
-    /* background-color: #f2f2f2; */
     padding: 20px;
   }
+
+  .pageCandidatDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .pageCandidatDiv2 {
+    align-items: center;
+    text-align: center;
+  }
+
+  .fichierCandidatDiv {
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+
+    background-color: #c9c7c7;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow-wrap: break-word;
+
+    min-width: 100px;
+    max-width: 150px;
+    margin: 0.5em;
+    padding: 0.5em;
+
+    -webkit-transition: background-color 500ms linear;
+    -moz-transition: background-color 500ms linear;
+    -o-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+  }
+
+  .fichierCandidatDiv:hover {
+    background-color: #b3c000;
+    position: relative;
+    bottom: 5px;
+  }
+
+  #titreFichierCandidat {
+    overflow: auto;
+    color: black;
+    overflow-wrap: break-word;
+  }
+
+  
