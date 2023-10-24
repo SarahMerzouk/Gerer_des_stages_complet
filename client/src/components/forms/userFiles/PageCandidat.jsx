@@ -44,18 +44,17 @@ function PageCandidat() {
   return (
     <div>
         <div class="pageCandidatDiv">
-        <h2>Informations sur le candidat</h2>
-        <p><strong>Nom de l'étudiant:</strong> {student.username}</p>
-        <p><strong>Adresse courriel:</strong> {student.email}</p>
+          <h2>Informations sur le candidat</h2>
+          <p><strong>Nom de l'étudiant:</strong> {student.username}</p>
+          <p><strong>Adresse courriel:</strong> {student.email}</p>
 
-            <br />
-            <h3>Documents:</h3>
+          <br />
+          <h3>Documents:</h3>
         </div>
         <div class="pageCandidatDiv2">
-                
-        {filesList?.map((fichier) => {
-            return <FichierCandidat key={fichier.id} fichier={fichier} />;
-        })}
+          {filesList?.map((fichier) => {
+              return <FichierCandidat key={fichier.id} fichier={fichier} />;
+          })}
         </div>
     </div>
   );

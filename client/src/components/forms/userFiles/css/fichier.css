@@ -27,8 +27,8 @@
   }
 
   .fichierCandidatDiv {
-    display: inline-block;
-    align-items: center;
+    display: inline-table;
+    align-items:center;
     text-align: center;
 
     background-color: #c9c7c7;
@@ -36,8 +36,9 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     overflow-wrap: break-word;
 
-    min-width: 100px;
+    min-width: 150px;
     max-width: 150px;
+    min-height: 116px;;
     margin: 0.5em;
     padding: 0.5em;
 
@@ -51,11 +52,11 @@
   .fichierCandidatDiv:hover {
     background-color: #b3c000;
     position: relative;
+    box-shadow: rgba(0, 0, 0, 0.35) 5px 10px 20px;
     bottom: 5px;
   }
 
   #titreFichierCandidat {
-    overflow: auto;
     color: black;
     overflow-wrap: break-word;
   }
