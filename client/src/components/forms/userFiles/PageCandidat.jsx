@@ -53,7 +53,6 @@ function PageCandidat() {
         </div>
         <div class="pageCandidatDiv2">
           {filesList?.length === 0 ? <p><strong>Aucun fichier lié avec ce profil.</strong></p> : 
-          
             filesList?.map((fichier) => {
                 return <FichierCandidat key={fichier.id} fichier={fichier} />;
             })
