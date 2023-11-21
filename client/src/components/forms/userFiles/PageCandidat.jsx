@@ -6,8 +6,7 @@ import FichierCandidat from "./FichierCandidat";
 
 function PageCandidat() {
   const location = useLocation();
-  const user = location.state;
-  const student = user.user;
+  const student = location.state;
   const [filesList, setFilesList] = useState(null);
   const token = localStorage.getItem("jwtToken");
   axios.defaults.headers.common["x-access-token"] = token;

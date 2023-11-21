@@ -180,7 +180,7 @@ const addApplicant = async (req, res, next) => {
   try {
     const newApplicant = new Applicant({
       internshipId: req.body.internshipId,
-      studentId: req.body.userId,
+      student: req.body.userId,
     });
 
     await newApplicant.save();
@@ -217,30 +217,83 @@ const addApplicant = async (req, res, next) => {
   }
 };
 
-const getApplicantList = async (req, res, next) => {
-    const internshipId = req.body.id;
-    console.log(internshipId);
+const getApplicantListStudent = async (req, res, next) => {
+  const studentId = req.body.id;
+  let Applicants;
+  try {
+    // Use the correct field names in your find query
+    Applicants = await Applicant.find({ student: studentId }).populate('internshipId');
+  } catch (err) {
+    return next(
+      new HttpError(
+        "Erreur lors de la récupération de la liste des stages",
+        500
+      )
+    );
+  }
 
-    let Applicants;
-    try {
-      Applicants = await Applicant.find({ InternshipId: internshipId });
-    } catch (err) {
-      return next(
-        new HttpError(
-          "Erreur lors de la récupération de la liste des stages",
-          500
-        )
-      );
-    }
-  
-    if (!Applicants || Applicants.length === 0) {
-      return next(new HttpError("Aucun stage trouvé", 404));
-    }
-    res.json({
-      Applicants: Applicants.map((applicant) =>
+  if (!Applicants || Applicants.length === 0) {
+    return next(new HttpError("Aucun stage trouvé", 404));
+  }
+  res.json({
+    Applicants: Applicants.map((applicant) =>
       applicant.toObject({ getters: true })
-      ),
-    });
+    ),
+  });
+};
+
+const getApplicantListEmployeur = async (req, res, next) => {
+  const internshipId = req.body.id;
+  console.log(internshipId);
+
+  let Applicants;
+  try {
+    // Use the correct field names in your find query
+    Applicants = await Applicant.find({ internshipId: internshipId }).populate('student');
+  } catch (err) {
+    return next(
+      new HttpError(
+        "Erreur lors de la récupération de la liste des stages",
+        500
+      )
+    );
+  }
+
+  if (!Applicants || Applicants.length === 0) {
+    return next(new HttpError("Aucun stage trouvé", 404));
+  }
+  res.json({
+    Applicants: Applicants.map((applicant) =>
+      applicant.toObject({ getters: true })
+    ),
+  });
+};
+
+const setStatusApplicant = async (req, res, next) => {
+  const { applicantId, status } = req.body;
+
+  try {
+    // Validate that the status is one of the allowed values
+    if (!["En attente", "En révision", "Acceptée", "Refusée"].includes(status)) {
+      return res.status(400).json({ error: "Invalid status value" });
+    }
+
+    // Update the status of the applicant
+    const updatedApplicant = await Applicant.findByIdAndUpdate(
+      applicantId,
+      { internshiptype: status },
+      { new: true }
+    );
+
+    if (!updatedApplicant) {
+      return res.status(404).json({ error: "Applicant not found" });
+    }
+
+    res.json(updatedApplicant);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 };
 
 const isApplicantInList = async (req, res, next) => {
@@ -296,6 +349,9 @@ exports.getInternshipsByOwnerId = getInternshipsByOwnerId;
 exports.deleteInternship = deleteInternship;
 exports.updateInternship = updateInternship;
 exports.addApplicant = addApplicant;
-exports.getApplicantList = getApplicantList;
+exports.getApplicantListEmployeur = getApplicantListEmployeur;
+exports.getApplicantListStudent = getApplicantListStudent;
+exports.setStatusApplicant = setStatusApplicant;
 exports.isApplicantInList = isApplicantInList;
 exports.addStudent = addStudent;
+
