@@ -1,4 +1,5 @@
 const Internship = require("../models/Internship");
+const Applicant = require("../models/Applicant")
 const User = require("../models/User");
 const HttpError = require("../models/HttpError");
 const sendEmail = require("../utils/sendEmail");
@@ -176,10 +177,16 @@ const addApplicant = async (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(internshipId)) {
     return next(new HttpError("Invalid internship ID", 400));
   }
-
   try {
+    const newApplicant = new Applicant({
+      internshipId: req.body.internshipId,
+      studentId: req.body.userId,
+    });
+
+    await newApplicant.save();
+
     const internship = await Internship.findById(internshipId);
-    const user = await User.findById(userId);; // étudiant
+    const user = await User.findById(userId); // étudiant
 
     if (!internship) {
       return next(new HttpError("Internship not found", 404));
@@ -208,6 +215,32 @@ const addApplicant = async (req, res, next) => {
     console.error(error);
     return next(new HttpError("Internal server error", 500));
   }
+};
+
+const getApplicantList = async (req, res, next) => {
+    const internshipId = req.body.id;
+    console.log(internshipId);
+
+    let Applicants;
+    try {
+      Applicants = await Applicant.find({ InternshipId: internshipId });
+    } catch (err) {
+      return next(
+        new HttpError(
+          "Erreur lors de la récupération de la liste des stages",
+          500
+        )
+      );
+    }
+  
+    if (!Applicants || Applicants.length === 0) {
+      return next(new HttpError("Aucun stage trouvé", 404));
+    }
+    res.json({
+      Applicants: Applicants.map((applicant) =>
+      applicant.toObject({ getters: true })
+      ),
+    });
 };
 
 const isApplicantInList = async (req, res, next) => {
@@ -263,5 +296,6 @@ exports.getInternshipsByOwnerId = getInternshipsByOwnerId;
 exports.deleteInternship = deleteInternship;
 exports.updateInternship = updateInternship;
 exports.addApplicant = addApplicant;
+exports.getApplicantList = getApplicantList;
 exports.isApplicantInList = isApplicantInList;
 exports.addStudent = addStudent;

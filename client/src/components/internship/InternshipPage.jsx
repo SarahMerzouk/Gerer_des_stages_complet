@@ -26,7 +26,14 @@ function InternshipPage() {
 
   async function getStudentsForInternship(){
     let arrayOfStudents = [];
-
+    console.log(internship._id)
+    const response = await axios.post(
+      URL + "/api/internship/get-Applicant-List",
+      {
+        id: internship._id ,
+      }
+    );
+    console.log(response)
     for (let i = 0; i < nbCandidatures; i++) {
       const userId = internship.applicantlist[i];
   
