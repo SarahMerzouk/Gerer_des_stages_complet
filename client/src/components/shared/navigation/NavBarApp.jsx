@@ -42,9 +42,15 @@ function NavBarApp({ role }) {
               Espace Étudiant
             </NavDropdown.Item>
             {role === "Etudiant" && (
-              <NavDropdown.Item as={Link} to={`/${role}/stageDisponible`}>
-                Stages Disponibles
-              </NavDropdown.Item>
+              <>
+                <NavDropdown.Item as={Link} to={`/${role}/stageDisponible`}>
+                  Stages Disponibles
+                </NavDropdown.Item>
+
+                <NavDropdown.Item as={Link} to={`/${role}/applicationsPourEtudiant`}>
+                Applications envoyées
+                </NavDropdown.Item>
+              </>
             )}
             {role === "Employeur" && (
               <NavDropdown.Item as={Link} to={`/${role}/publierstage`}>
