@@ -27,7 +27,7 @@ import ChangePassword from "./components/email/ChangePassword";
 import Profil from "./components/forms/updateProfile/Profil";
 import InternshipPage from "./components/internship/InternshipPage";
 import PageCandidat from "./components/forms/userFiles/PageCandidat";
-
+import InternshipApplicationsForStudent from "./components/internship/InternshipApplicationsForStudent.jsx";
 function App() {
   const [token, setToken] = useState(null);
   const [role, setRole] = useState("guess");
@@ -152,6 +152,11 @@ function App() {
             <Route path="/Etudiant/stageDisponible">
               <Student />
             </Route>
+
+            <Route path="/Etudiant/applicationsPourEtudiant">
+              <InternshipApplicationsForStudent />
+            </Route>
+            
             <Route path="/Employeur/updateStage">
               <InternshipUpdate />
             </Route>
