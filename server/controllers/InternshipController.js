@@ -223,6 +223,7 @@ const getApplicantListStudent = async (req, res, next) => {
   try {
     // Use the correct field names in your find query
     Applicants = await Applicant.find({ student: studentId }).populate('internshipId');
+    console.log(Applicants);
   } catch (err) {
     return next(
       new HttpError(
