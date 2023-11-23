@@ -1,40 +1,50 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import CardInternshipStudent from "../shared/cards/CardInternshipStudent";
 import UserContext from "../../UserContext";
-import "./css/InternshipListStudent.css";
 import Loading from "../shared/loading/loading";
+import CardInternshipStudentApplication from "../shared/cards/CardInternshipStudentApplication";
 
 function InternshipApplicationsForStudent() {
-    const { userId} = useContext(UserContext);
-    const [applicationsList, setApplicationsList] = useState([]);
+    const {userId} = useContext(UserContext);
     const token = localStorage.getItem("jwtToken");
     axios.defaults.headers.common["x-access-token"] = token;
     const URL = process.env.REACT_APP_BASE_URL;
     const [isLoading, setIsLoading] = useState(false);
-    
+    let stagesInscrits = null;
     async function getApplicationsForStudent() {
-        const response = await axios.get(
+        const response = await axios.post(
           URL + "/api/internship/get-Applicant-List-Student",
           {
-            studentId: userId,
+           studentId: userId
           }
         );
-        console.log(response.data.Applicants);
-        setApplicationsList(response.data);
-      }
+        
+        stagesInscrits = response.data.Applicants;
+        console.log(stagesInscrits);
 
-      useEffect(() => {
-        getApplicationsForStudent();
-        console.log('lol', applicationsList);
-      }, []);
-    
-      if (isLoading) {
+        return stagesInscrits;
+    }    
+
+    useEffect(() => {
+        const fetchData = async () => {
+            getApplicationsForStudent();
+        };
+          fetchData();
+    }, [userId]);
+
+    if (isLoading) {
         return <Loading />;
-      }
+    }
 
     return (
-        <div>hello</div>
+        <div>
+            {stagesInscrits && stagesInscrits.map((stage) => (
+                <div>
+                    <CardInternshipStudentApplication internship={stage.internshipId}/>
+                    <p>lol</p>
+                </div>
+            ))}
+        </div>
     );
 }
 export default InternshipApplicationsForStudent;

@@ -219,10 +219,10 @@ const addApplicant = async (req, res, next) => {
 
 const getApplicantListStudent = async (req, res, next) => {
   const studentId = req.body.studentId;
-  let listeApplications;
+  let Applicants;
   try {
     // Use the correct field names in your find query
-    listeApplications = await Applicant.find({ student: studentId }).populate('internshipId');
+    Applicants = await Applicant.find({ student: studentId }).populate('internshipId');
   } catch (err) {
     return next(
       new HttpError(
@@ -232,11 +232,11 @@ const getApplicantListStudent = async (req, res, next) => {
     );
   }
 
-  if (!listeApplications || listeApplications.length === 0) {
+  if (!Applicants || Applicants.length === 0) {
     return next(new HttpError("Aucun stage trouvé", 404));
   }
   res.json({
-    listeApplications: listeApplications.map((applicant) =>
+    Applicants: Applicants.map((applicant) =>
       applicant.toObject({ getters: true })
     ),
   });
