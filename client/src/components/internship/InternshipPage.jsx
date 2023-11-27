@@ -24,6 +24,22 @@ function InternshipPage() {
     setApplicantList(response.data.Applicants);
   }
 
+  async function updateApplicantStatus(applicantId, newStatus) {
+    try {
+      const response = await axios.post(URL + "/api/internship/set-status-Applicant", {
+        applicantId: applicantId,
+        status: newStatus,
+      });
+      console.log(applicantId)
+      console.log(newStatus)
+      // Mettez à jour la liste des candidats après la modification du statut
+      // Si nécessaire, manipulez la réponse reçue du backend (response.data) selon vos besoins
+      await getStudentsForInternship();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  
   function bonStage(user) {
     const taille = user.stagesInscrits.length;
     let bonStage = false;
@@ -45,7 +61,6 @@ function InternshipPage() {
 
     // récupérer l'id du stage inscrit
     for (let i = 0; i < taille; i++) {
-      console.log(internship._id);
       if (user.stagesInscrits[i] === internship._id) {
         bonStage = true;
         index = i;
@@ -142,15 +157,15 @@ function InternshipPage() {
                   <>
                     <thead>
                       <th>
-                        <th>nombre de résultats {nbCandidatures}</th>
+                        <th>nombre de résultats: {nbCandidatures}</th>
                       </th>
                     </thead>
                     {applicantList &&
                       applicantList.map((applicant) => (
                         <tr
-                          key={applicant.student.__id}
-                          className="applicant-table-row"
-                        >
+  key={applicant.student.__id}
+  className={`applicant-table-row ${applicant.status === 'En attente' ? 'enAttente' : ''} ${applicant.status === 'Acceptée' ? 'accepte' : ''} ${applicant.status === 'Refusée' ? 'refus' : ''} ${applicant.status === 'En révision' ? 'revision' : ''}`}
+>
                           {/* si l'étudiant existe */}
                           <td className="applicant-table-colum">
                             {applicant.student?.username || "N/A"}
@@ -174,6 +189,17 @@ function InternshipPage() {
                             <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
                           </svg>
                             </Link>
+                          </td>
+                          <td className={`applicant-table-colum ${applicant.status === 'En attente' ? 'enAttente' : ''} ${applicant.status === 'Acceptée' ? 'accepte' : ''} ${applicant.status === 'Refusée' ? 'refus' : ''} ${applicant.status === 'En révision' ? 'revision' : ''}`}>
+                            <select
+                              value={applicant.status}
+                              onChange={(e) => updateApplicantStatus(applicant._id, e.target.value)}
+                            >
+                              <option value="En attente">En attente</option>
+                              <option value="En révision">En révision</option>
+                              <option value="Acceptée">Acceptée</option>
+                              <option value="Refusée">Refusée</option>
+                            </select>
                           </td>
                         </tr>
                       ))}

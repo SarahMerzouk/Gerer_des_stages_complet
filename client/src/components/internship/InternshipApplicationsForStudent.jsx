@@ -39,7 +39,7 @@ function InternshipApplicationsForStudent() {
             await axios.delete(URL + "/api/internship/delete-applicant", { data: { id: applicationId } });
             await getApplicationsForStudent();
             setStagesInscrits((stagesInscrits) =>
-            stagesInscrits.filter((item) => item._id !== applicationId)
+            stagesInscrits .filter((item) => item._id !== applicationId)
       );
         } catch (err) {
             console.log(err);

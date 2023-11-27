@@ -279,23 +279,33 @@ const setStatusApplicant = async (req, res, next) => {
       return res.status(400).json({ error: "Invalid status value" });
     }
 
-    // Update the status of the applicant
-    const updatedApplicant = await Applicant.findByIdAndUpdate(
-      applicantId,
-      { internshiptype: status },
-      { new: true }
-    );
+    let applicant;
+    try {
+      applicant = await Applicant.findById(applicantId);
+    } catch (err) {
+      return res.status(500).json({ error: "Error finding applicant" });
+    }
 
-    if (!updatedApplicant) {
+    if (!applicant) {
       return res.status(404).json({ error: "Applicant not found" });
     }
 
-    res.json(updatedApplicant);
+    applicant.status = status;
+
+    try {
+      await applicant.save();
+    } catch (err) {
+      return res.status(500).json({ error: "Error updating applicant status" });
+    }
+
+    res.json({ message: "Applicant status updated successfully", updatedApplicant: applicant });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+
 
 const isApplicantInList = async (req, res, next) => {
   const { internshipId, userId } = req.body;
