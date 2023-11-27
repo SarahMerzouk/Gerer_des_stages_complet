@@ -298,16 +298,16 @@ const setStatusApplicant = async (req, res, next) => {
 };
 
 const isApplicantInList = async (req, res, next) => {
-  const internshipId = req.body.internshipId;
-  const userId = req.body.userId;
+  const { internshipId, userId } = req.body;
+
   try {
-    const internship = await Internship.findById(internshipId);
-    if (!internship) {
-      return next(new HttpError("Internship not found", 404));
+    const applicant = await Applicant.findOne({ internshipId, student: userId });
+
+    if (!applicant) {
+      return res.status(200).json({ isInList: false });
     }
 
-    const isInList = internship.applicantlist.includes(userId);
-    res.status(200).json({ isInList });
+    res.status(200).json({ isInList: true });
   } catch (error) {
     console.error(error);
     return next(new HttpError("Internal server error", 500));
@@ -343,6 +343,24 @@ const addStudent = async (req, res, next) => {
   }
 };
 
+const deleteApplicant = async (req, res, next) => {
+  const applicantId = req.body.id;
+
+  try {
+    // Find the applicant by ID and remove it
+    const deletedApplicant = await Applicant.findByIdAndRemove(applicantId);
+
+    if (!deletedApplicant) {
+      return res.status(404).json({ message: 'Applicant not found' });
+    }
+
+    res.status(200).json({ message: 'Applicant deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
 
 exports.addInternship = addInternship;
 exports.allInternship = allInternship;
@@ -355,4 +373,5 @@ exports.getApplicantListStudent = getApplicantListStudent;
 exports.setStatusApplicant = setStatusApplicant;
 exports.isApplicantInList = isApplicantInList;
 exports.addStudent = addStudent;
+exports.deleteApplicant  = deleteApplicant;
 

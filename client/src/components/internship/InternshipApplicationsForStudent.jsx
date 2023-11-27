@@ -27,7 +27,6 @@ function InternshipApplicationsForStudent() {
                     studentId: userId
                 }
             );
-            //stagesInscrits = response.data.Applicants;
             setStagesInscrits(response.data.Applicants);
         } catch (err) {
             console.log(err);
@@ -35,7 +34,17 @@ function InternshipApplicationsForStudent() {
        
     
     }    
-
+    async function deleteApplication(applicationId) {
+        try {
+            await axios.delete(URL + "/api/internship/delete-applicant", { data: { id: applicationId } });
+            await getApplicationsForStudent();
+            setStagesInscrits((stagesInscrits) =>
+            stagesInscrits.filter((item) => item._id !== applicationId)
+      );
+        } catch (err) {
+            console.log(err);
+        }
+    }
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -75,6 +84,7 @@ function InternshipApplicationsForStudent() {
                                         <th className="applicant-titre-table-colum">Date d'application</th>
                                         <th className="applicant-titre-table-colum">Personne contact</th>
                                         <th className="applicant-titre-table-colum">Statue de la demande</th>
+                                        <th className="applicant-titre-table-colum">Actions</th>
                                     </tr>
 
                                 {stagesInscrits && stagesInscrits.map((stage) => (
@@ -86,7 +96,10 @@ function InternshipApplicationsForStudent() {
                                         <td className="applicant-table-colum">{stage?.internshipId.companyname}</td>
                                         <td className="applicant-table-colum">{getDaysSince(stage.internshipId.creationdate)}</td>
                                         <td className="applicant-table-colum">{stage?.internshipId.contactemail}</td>
-                                        <td className={statusTypes[stage?.status]}>{stage?.status}</td>                                     
+                                        <td className={statusTypes[stage?.status]}>{stage?.status}</td>      
+                                        <td className="applicant-table-colum">
+                                            <button onClick={() => deleteApplication(stage._id)}>Supprimer</button>
+                                        </td>                       
                                 </tr>
                                 ))}
                             </table>

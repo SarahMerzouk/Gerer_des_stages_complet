@@ -14,6 +14,6 @@ router.post("/get-Applicant-List-Student",InternshipController.getApplicantListS
 router.post("/set-status-Applicant",InternshipController.setStatusApplicant);
 router.post("/is-Applicant-In-List",verifyToken, InternshipController.isApplicantInList);
 router.post("/add-student",verifyToken,InternshipController.addStudent);
-
+router.delete("/delete-applicant",verifyToken,InternshipController.deleteApplicant);
 
 module.exports = router;
