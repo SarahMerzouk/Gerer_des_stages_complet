@@ -14,6 +14,8 @@ function InternshipMap() {
     const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
     const location = useLocation();
     const internship = location.state;
+    const titre = internship.internshiptitle;
+    const name = internship.companyname;
     const adresse = internship.companyadresse;
     const [adresseValide, setAdresseValide] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -59,15 +61,17 @@ function InternshipMap() {
             {!loading && (
                 <>
                     {adresseValide ? (
-                        <div>
-                            <p>Adresse Valide</p>
-                            <p>{adresse}</p>
+                        <div className="mapHeader">
+
+                            <h3>{titre}, {name}</h3>
+                            <h4>{adresse}</h4>
                             <MapComponent lng={longitude} lat={latitude} />
                         </div>
                     ) : (
-                        <div>
-                            <p>Impossible de trouver l'adresse sur la Carte</p>
-                            <p>{adresse}</p>
+                        <div className="mapHeader">
+                            <h3>{titre}, {name}</h3>
+                            <h4>{adresse}</h4>
+                            <p><strong>Oops! Impossible de trouver l'adresse sur la carte.</strong></p>
                         </div>
                     )}
                 </>
