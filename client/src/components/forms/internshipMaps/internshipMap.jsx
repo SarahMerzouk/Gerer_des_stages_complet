@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import axios from "axios";
+import MapComponent from "./mapComponent";
 
 
 {/*
@@ -16,6 +17,8 @@ function InternshipMap() {
     const adresse = internship.companyadresse;
     const [adresseValide, setAdresseValide] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [longitude, setLongitude] = useState(null);
+    const [latitude, setLatitude] = useState(null);
 
     useEffect(() => {
         const validateAddress = async () => {
@@ -24,21 +27,25 @@ function InternshipMap() {
                     `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(adresse)}&key=${API_KEY}`
                 );
 
-                console.log(response)
+                //console.log(response)
 
                 if (response.data.status === "OK" && (response.data.results[0].geometry.location_type === "ROOFTOP")) {
                     setAdresseValide(true);
+                    setLongitude(response.data.results[0].geometry.location.lng)
+                    setLatitude(response.data.results[0].geometry.location.lat)
                 } else {
                     setAdresseValide(false);
                 }
 
-                console.log(response)
+                //console.log(response)
+
 
                 setLoading(false); // Set loading to false once the validation is complete
             } catch (error) {
                 console.error('Error validating address:', error);
                 setAdresseValide(false);
                 setLoading(false); // Set loading to false in case of an error
+                window.location.reload();
             }
         };
 
@@ -55,6 +62,7 @@ function InternshipMap() {
                         <div>
                             <p>Adresse Valide</p>
                             <p>{adresse}</p>
+                            <MapComponent lng={longitude} lat={latitude} />
                         </div>
                     ) : (
                         <div>
