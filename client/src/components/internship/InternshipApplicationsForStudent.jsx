@@ -94,7 +94,7 @@ function InternshipApplicationsForStudent() {
                                     >
                                         <td className="applicant-table-colum">{stage?.internshipId.internshiptitle}</td>
                                         <td className="applicant-table-colum">{stage?.internshipId.companyname}</td>
-                                        <td className="applicant-table-colum">{getDaysSince(stage.internshipId.creationdate)}</td>
+                                        <td className="applicant-table-colum">{getDaysSince(stage?.creationdate)}</td>
                                         <td className="applicant-table-colum">{stage?.internshipId.contactemail}</td>
                                         <td className={statusTypes[stage?.status]}>{stage?.status}</td>      
                                         <td className="applicant-table-colum">

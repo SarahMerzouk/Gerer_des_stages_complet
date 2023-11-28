@@ -181,6 +181,7 @@ const addApplicant = async (req, res, next) => {
     const newApplicant = new Applicant({
       internshipId: req.body.internshipId,
       student: req.body.userId,
+      creationdate: Date.now()
     });
 
     await newApplicant.save();

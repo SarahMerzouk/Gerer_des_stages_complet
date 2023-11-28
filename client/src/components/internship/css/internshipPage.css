@@ -103,3 +103,16 @@
 .revision:hover {
     box-shadow: 0 0 5px 2px blue;
 }
+
+.enAttente {
+    color : gray;
+}
+.accepte {
+    color: green;
+}
+.refus {
+    color: red;
+}
+.revision {
+    color :blue;
+}
