@@ -1,11 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import { getDaysSince } from "../../../utils/getDaySince";
-import { NavLink } from "react-router-dom";
 import UserContext from "../../../UserContext";
 import "./css/CardInternship.css";
 import axios from "axios";
-import { useDropzone } from "react-dropzone";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function CardInternship({ internship }) {
   const URL = process.env.REACT_APP_BASE_URL;
@@ -117,10 +116,22 @@ function CardInternship({ internship }) {
         <div className="description-text">
           <p>{internship.internshipdescription}</p>
         </div>
+
         <div className="app-button-container">
           {isInList ?
            (<button className="app-button-disabled"> Application envoyée </button>) 
            : <button className="app-button" onClick={handleSubmit}>Appliquer</button>}
+        </div>
+        
+        {/* Button pour afficher la map */}
+        <div className="app-button-container">
+          <Link to=
+          {{
+            pathname: "/stages/map",
+            state: internship,
+          }}>
+            <button className="app-button">Consulter la carte</button>
+          </Link>
         </div>
       </div>
     </div>

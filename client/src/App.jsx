@@ -28,6 +28,7 @@ import Profil from "./components/forms/updateProfile/Profil";
 import InternshipPage from "./components/internship/InternshipPage";
 import PageCandidat from "./components/forms/userFiles/PageCandidat";
 import InternshipApplicationsForStudent from "./components/internship/InternshipApplicationsForStudent.jsx";
+import InternshipMap from "./components/forms/internshipMaps/internshipMap.jsx";
 function App() {
   const [token, setToken] = useState(null);
   const [role, setRole] = useState("guess");
@@ -203,19 +204,19 @@ function App() {
                 return <Redirect to="/" />;
               }}
             />
-            
             <Route path="/Employeur/internship/">
               <InternshipPage />
             </Route>
-
             <Route path="/Employeur/candidature/">
               <PageCandidat />
             </Route>
-
             <Route path="/users/:id/editAccount/:token">
                 {/* <EditAccount/> */}
             </Route>
-            
+            <Route path="/stages/map">
+                <InternshipMap />
+            </Route>
+
             <Route path="">
               <Accueil />
             </Route>
