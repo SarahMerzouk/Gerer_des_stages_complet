@@ -1,4 +1,8 @@
 # Mon Site Web - Stages Montmorency
+
+### Site web déployé
+Lien : https://cmontmorency-stages-informatiques.vercel.app/
+
 Ce fichier README présente les fonctionnalités principales de notre site Web, qui est une plateforme permettant de gérer des stages pour les étudiants de Montmorency. Les utilisateurs peuvent s'inscrire, se connecter, chercher des stages, postuler à des offres de stage, et les employeurs peuvent publier des offres de stage et gérer les candidatures.
 
 ## Fonctionnalités principales
@@ -12,6 +16,7 @@ Ce fichier README présente les fonctionnalités principales de notre site Web, 
 8. Liste des utilisateurs
 9. Mise à jour des stages
 10. Formulaire de candidature
+11. Visualisation de la compagnie sur une maps
 
 ## Détails des fonctionnalités
 ### 1. Inscription et connexion des utilisateurs
@@ -43,6 +48,9 @@ Les employeurs ont la possibilité de mettre à jour les informations sur les of
 
 ### 10. Formulaire de candidature
 Les étudiants peuvent remplir un formulaire de candidature détaillé lors de la postulation à une offre de stage.
+
+### 11. Visualisation de la compagnie sur une maps
+Les étudiants peuvent consulter les offres de stages et voir l'emplacement des compagnies en question sur une carte.
 
 ## Routes de l'API
 ### L'API a les routes suivantes :
